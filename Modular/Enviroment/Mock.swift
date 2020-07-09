@@ -11,12 +11,12 @@ import GrapheNaked
 import Singalong
 
 extension ScaffGraph {
-  convenience init() {
+   init() {
     let initial = CGSize3(width: 300, depth: 100, elev: 400) |> createNusGrid
     self.init(id:"Mock", grid: initial.0, edges: initial.1)
   }
   
-  convenience init(grid:GraphPositions, edges:[ScaffEdge]) {
+   init(grid:GraphPositions, edges:[ScaffEdge]) {
      self.init(id:"Mock", grid: grid, edges: edges)
   }
   

@@ -12,12 +12,8 @@ import GrapheNaked
 import Interface
 
 
-final public class ScaffGraph : Equatable, GraphHolder {
+public struct ScaffGraph : Equatable, GraphHolder {
   public var id: String
-  
-  public static func == (lhs: ScaffGraph, rhs: ScaffGraph) -> Bool {
-    return lhs.id==rhs.id && lhs.grid == rhs.grid && lhs.edges == rhs.edges
-  }
   
   public init(id: String, grid: GraphPositions, edges:[ScaffEdge]) {
     self.id = id
@@ -27,7 +23,7 @@ final public class ScaffGraph : Equatable, GraphHolder {
   public var grid : GraphPositions
   public var edges : [ScaffEdge]
   
-  func addEdge(_ cedge : CEdge<ScaffType>) {
+  mutating func addEdge(_ cedge : CEdge<ScaffType>) {
     let new = (grid, cedge) |> add
     grid = new.0
     edges.append(new.1)

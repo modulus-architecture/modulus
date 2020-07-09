@@ -106,6 +106,11 @@ public func quadReducer<Holder: GraphHolder>()->Reducer<QuadState<Holder>, QuadA
       state.frontState.selectionView = CGRect(origin: state.frontOrigin, size: state.frontState.spriteState.viewSpaceSize)
       state.sideState.selectionView = CGRect(origin: state.sideOrigin, size: state.sideState.spriteState.viewSpaceSize)
       state.rotatedPlanState.selectionView = CGRect(origin: state.rotatedOrigin, size: state.rotatedPlanState.spriteState.viewSpaceSize)
+      
+      state.frontState.spriteState.graph = state.planState.spriteState.graph
+      state.sideState.spriteState.graph = state.planState.spriteState.graph
+      state.rotatedPlanState.spriteState.graph = state.planState.spriteState.graph
+      
       break
     case .rotated:
       //state.yOffsetR = state.rotatedPlanState.selectionView.x
@@ -123,6 +128,12 @@ public func quadReducer<Holder: GraphHolder>()->Reducer<QuadState<Holder>, QuadA
       state.frontState.selectionView = CGRect(origin: state.frontOrigin, size: state.frontState.spriteState.viewSpaceSize)
       state.sideState.selectionView = CGRect(origin: state.sideOrigin, size: state.sideState.spriteState.viewSpaceSize)
       state.planState.selectionView = CGRect(origin: state.planOrigin, size: state.planState.spriteState.viewSpaceSize)
+      
+      
+      state.frontState.spriteState.graph = state.rotatedPlanState.spriteState.graph
+      state.sideState.spriteState.graph = state.rotatedPlanState.spriteState.graph
+      state.planState.spriteState.graph = state.rotatedPlanState.spriteState.graph
+      
       break
     case .front:
 //      state.xOffset = state.frontState.selectionView.x
@@ -141,6 +152,12 @@ public func quadReducer<Holder: GraphHolder>()->Reducer<QuadState<Holder>, QuadA
       state.rotatedPlanState.selectionView = CGRect(origin: state.rotatedOrigin, size: state.rotatedPlanState.spriteState.viewSpaceSize)
       state.sideState.selectionView = CGRect(origin: state.sideOrigin, size: state.sideState.spriteState.viewSpaceSize)
       state.planState.selectionView = CGRect(origin: state.planOrigin, size: state.planState.spriteState.viewSpaceSize)
+      
+      
+      state.rotatedPlanState.spriteState.graph = state.frontState.spriteState.graph
+      state.sideState.spriteState.graph = state.frontState.spriteState.graph
+      state.planState.spriteState.graph = state.frontState.spriteState.graph
+      
       break
       
     case .side:
@@ -160,6 +177,12 @@ public func quadReducer<Holder: GraphHolder>()->Reducer<QuadState<Holder>, QuadA
       state.rotatedPlanState.selectionView = CGRect(origin: state.rotatedOrigin, size: state.rotatedPlanState.spriteState.viewSpaceSize)
       state.frontState.selectionView = CGRect(origin: state.frontOrigin, size: state.frontState.spriteState.viewSpaceSize)
       state.planState.selectionView = CGRect(origin: state.planOrigin, size: state.planState.spriteState.viewSpaceSize)
+      
+      
+           state.rotatedPlanState.spriteState.graph = state.sideState.spriteState.graph
+           state.frontState.spriteState.graph = state.sideState.spriteState.graph
+           state.planState.spriteState.graph = state.sideState.spriteState.graph
+      
       break
     }
       return .none

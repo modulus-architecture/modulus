@@ -76,7 +76,7 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
   }
   public var spriteFrame: CGRect
   public var scale : CGFloat
-  public let graph : Holder
+  public var graph : Holder
   var sizePreferences : [CGFloat]
   let editingView : GenericEditingView<Holder>
   let loadedViews : [GenericEditingView<Holder>]
@@ -173,7 +173,7 @@ func spriteReducer<Holder:GraphHolder>()->Reducer<SpriteState<Holder>, SpriteAct
       }
 }
 
-public protocol GraphHolder : class, Equatable {
+public protocol GraphHolder : Equatable {
   associatedtype Content : Codable
   var id : String { get }
   var edges : [Edge<Content>] { get set }

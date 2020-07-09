@@ -34,7 +34,7 @@ public let overall : ([CGFloat], CGSize3, [ScaffEdge]) -> (GraphPositions, [Scaf
   let edgeB1 = (pEz && pEy && pEx) |> edges.filtered
   
   
-  let s = ScaffGraph( grid : pos, edges : [])
+  var s = ScaffGraph( grid : pos, edges : [])
   s.edges = addScaff(grid: pos)
   
   

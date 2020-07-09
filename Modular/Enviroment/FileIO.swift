@@ -127,7 +127,7 @@ func loadProgression() -> Result<ItemList<ScaffGraph>, LoadError>{
 
 func addIDToScaffGraph(itemList : inout ItemList<ScaffGraph>) {
   for (offset, element) in itemList.contents.enumerated() {
-    let scaffGraph = itemList.contents[offset].content
+    var scaffGraph = itemList.contents[offset].content
     print("was", scaffGraph.id, "will be", element.id)
     scaffGraph.id = element.id
     itemList.addOrReplace(item: Item(content: scaffGraph, id: element.id, name: element.name, sizePreferences: element.sizePreferences, isEnabled: element.isEnabled, thumbnailFileName: element.thumbnailFileName))

@@ -70,7 +70,7 @@ extension ScaffoldingGridSizes {
 struct Item<Content:Equatable> : Equatable {
   typealias ID = String
   
-  let content: Content
+  var content: Content
   let id: String
   var name: String
   var sizePreferences: Set<ScaffoldingGridSizes> = []
@@ -96,7 +96,7 @@ extension Set where Element == ScaffoldingGridSizes {
 
 
 
-extension Item where Content : ScaffGraph {
+extension Item where Content == ScaffGraph {
   static var template : [ScaffoldingGridSizes] {  get { return [ScaffoldingGridSizes._50, ScaffoldingGridSizes._150] } }
 }
 
