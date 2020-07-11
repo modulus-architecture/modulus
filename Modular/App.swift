@@ -124,7 +124,7 @@ import Interface
 
 
 struct AppState: Equatable {
-  var quadState : Item1UpView?
+  var quadState : CockpitState?
   var items : ItemList<ScaffGraph>
 }
 
@@ -135,7 +135,7 @@ enum AppAction {
   
   case setItems(ItemList<ScaffGraph>)
   
-  case interfaceAction(QuadAction<ScaffGraph>)
+  case interfaceAction(CockpitAction)
 }
 
 struct AppEnvironment {
@@ -145,11 +145,11 @@ struct AppEnvironment {
 
 let appReducer =  Reducer<AppState, AppAction, AppEnvironment>
    .combine(
-      quadReducer().pullback(state: \AppState.quadState!.quad, action: /AppAction.interfaceAction, environment: { appEnv in QuadEnvironment() }),
+      cockpitReducer.pullback(state: \AppState.quadState!, action: /AppAction.interfaceAction, environment: { appEnv in CockpitEnvironment() }),
       Reducer{ (state: inout AppState, action: AppAction, env: AppEnvironment) -> Effect<AppAction, Never> in
     switch action {
       case let .itemSelected(item):
-        state.quadState = Item1UpView(quad:QuadScaffState(graph: item.content,
+        state.quadState = CockpitState(quad:QuadScaffState(graph: item.content,
                                                           size: Current.screen.size,
                                                           sizePreferences: item.sizePreferences.toCentimeterFloats),
                                       item: item)
@@ -162,19 +162,9 @@ let appReducer =  Reducer<AppState, AppAction, AppEnvironment>
         state.items = itemList
         return .none
         
-      case let .interfaceAction(.plan(intfAction)),
-           let .interfaceAction(.rotated(intfAction)),
-           let .interfaceAction(.front(intfAction)),
-           let .interfaceAction(.side(intfAction)):
-        switch intfAction {
-        case .sprite : return .none
-        case .canvasAction: return .none
-        }
-        
-      case .interfaceAction(.page(_)):
-        return .none
-        }
+    case .interfaceAction: return .none
     }
+      }
 )
 
 
@@ -219,7 +209,7 @@ public class App {
     edit.tableView.rowHeight = 88
     edit.didSelect = { (item, cell) in
       self.viewStore.send(.itemSelected(cell))
-      self.currentNavigator = GraphNavigator(store: self.store.scope(state: {$0.quadState!}, action: { .interfaceAction($0) }))
+      self.currentNavigator = CockpitNavigator(store: self.store.scope(state: {$0.quadState!}, action: { .interfaceAction($0) }))
       self.loadEntryTable.pushViewController(self.currentNavigator.vc, animated: true)
     }
     edit.didSelectAccessory = { (item, cell) in
@@ -269,7 +259,7 @@ public class App {
     return nav
   }()
   
-  var currentNavigator : GraphNavigator!
+  var currentNavigator : CockpitNavigator!
 }
 
 

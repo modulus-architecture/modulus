@@ -37,7 +37,7 @@ func mockControllerFromMap(target: Any, _ vm: (label:String, viewMap: [GraphEdit
   let vc = UIViewController()
   vc.view.backgroundColor = .red
   vc.title = vm.label
-  vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "3D", style: UIBarButtonItem.Style.plain , target: target, action: #selector(GraphNavigator.present3D))
+  vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "3D", style: UIBarButtonItem.Style.plain , target: target, action: #selector(CockpitNavigator.present3D))
   return vc
 }
 

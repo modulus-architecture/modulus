@@ -95,7 +95,7 @@
 		D00069DB200BD08300E8D5F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D00069DA200BD08300E8D5F3 /* Assets.xcassets */; };
 		D00069DE200BD08300E8D5F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00069DC200BD08300E8D5F3 /* LaunchScreen.storyboard */; };
 		D02391A921CC1116002C4F4A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02391A721CC108C002C4F4A /* Environment.swift */; };
-		D02FCBC0212E08AD001BD55E /* GraphNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FCBBF212E08AD001BD55E /* GraphNavigator.swift */; };
+		D02FCBC0212E08AD001BD55E /* CockpitNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */; };
 		D05505F421A72074005BA9B4 /* Scaff2D->SKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05505F221A72074005BA9B4 /* Scaff2D->SKNode.swift */; };
 		D05505F621A72262005BA9B4 /* C2Edge->Scaff2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05505F521A72262005BA9B4 /* C2Edge->Scaff2D.swift */; };
 		D06C66BE2198D8BF005D5F35 /* FormsCopy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C66BD2198D8BF005D5F35 /* FormsCopy.framework */; };
@@ -356,7 +356,7 @@
 		D00069DD200BD08300E8D5F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D01A6E5920DD5C1F00250F32 /* LayoutToDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutToDriver.swift; sourceTree = "<group>"; };
 		D02391A721CC108C002C4F4A /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		D02FCBBF212E08AD001BD55E /* GraphNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigator.swift; sourceTree = "<group>"; };
+		D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CockpitNavigator.swift; sourceTree = "<group>"; };
 		D0326762207FFE3800BBF563 /* HandlesCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlesCoreTests.swift; sourceTree = "<group>"; };
 		D0326764207FFE3800BBF563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D033E37520F238FA0026E1C4 /* SpriteDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteDriver.swift; sourceTree = "<group>"; };
@@ -578,7 +578,7 @@
 				D02391B821CC13B4002C4F4A /* ViewControllers */,
 				D0B69D2420435F3900AEA01B /* SpriteKit */,
 				D09C3C42206B32370053EE2A /* App.swift */,
-				D02FCBBF212E08AD001BD55E /* GraphNavigator.swift */,
+				D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */,
 				D07C56B8211E74F50073D7A7 /* App+FreeFunctions.swift */,
 				D0F58CE6210E146F00AACC8F /* ViewMaps */,
 				21BCBD4C23819E3700644B14 /* Modular Files */,
@@ -1222,7 +1222,7 @@
 				21C33EDE23FA258000F7C5BF /* UIView+Image.swift in Sources */,
 				213DC75D238CA9F90062AA43 /* Scaffolding.swift in Sources */,
 				D05505F421A72074005BA9B4 /* Scaff2D->SKNode.swift in Sources */,
-				D02FCBC0212E08AD001BD55E /* GraphNavigator.swift in Sources */,
+				D02FCBC0212E08AD001BD55E /* CockpitNavigator.swift in Sources */,
 				21BCBD5223819F3800644B14 /* 3DExchange.swift in Sources */,
 				D0FD710521172C2600B27092 /* Changeset.swift in Sources */,
 				D075D8BA21C9EB35003AC600 /* ViewMap-Grid2D.swift in Sources */,

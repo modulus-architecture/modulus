@@ -15,13 +15,13 @@ import Interface
 import ComposableArchitecture
 
 
-
-public struct Item1UpView : Equatable {
+/// Cockpit is view and heads up display. Like a cockpit in a plane
+public struct CockpitState : Equatable {
   var quad : QuadState<ScaffGraph>
   var item : Item<ScaffGraph>
 }
 
-extension Item1UpView {
+extension CockpitState {
    var arProvider : ARProviderState { ARProviderState(scaff: self.item.content |> members )}
    var scnProvider : SCNProviderState { SCNProviderState(scaff: self.item.content |> members,
                                                          view: quad.pageState.currentQuadrant |> cameraView)
@@ -37,14 +37,25 @@ private func cameraView(from quadrant:PageState.Quadrant) -> CameraView {
    }
 }
 
-public enum Item1UpAction {
-  case technical(QuadAction<ScaffGraph>)
+public enum CockpitAction {
+  case quad(QuadAction<ScaffGraph>)
 }
 
-public class GraphNavigator {
-  public init(store: Store<Item1UpView, QuadAction<ScaffGraph>> ) {
+public struct CockpitEnvironment {
+   
+}
+
+public let cockpitReducer = Reducer<CockpitState, CockpitAction, CockpitEnvironment>.combine(
+   quadReducer().pullback(state: \CockpitState.quad, action: /CockpitAction.quad, environment: { appEnv in QuadEnvironment() }),
+   Reducer{
+      (state, action, env) in
+      return .none
+})
+
+public class CockpitNavigator {
+  public init(store: Store<CockpitState, CockpitAction> ) {
     self.store = store
-    self.quadStore = store.scope(state: {$0.quad}, action: { $0 })
+   self.quadStore = store.scope(state: {$0.quad}, action: { .quad($0) })
     let storeOne = quadStore.scope(state: {$0.planState}, action: { .plan($0) })
     let one = tentVC(store: storeOne, title: "Top")
     let store2 = quadStore.scope(state: {$0.rotatedPlanState}, action: { .rotated($0) })
@@ -57,16 +68,16 @@ public class GraphNavigator {
     driver.group  |> self.addNavBarItem
   }
   private var driver : QuadDriverCA
-  public let store : Store<Item1UpView, QuadAction<ScaffGraph>>
+  public let store : Store<CockpitState, CockpitAction>
   public let quadStore :  Store<QuadState<ScaffGraph>, QuadAction<ScaffGraph>>
   
   lazy var vc: UIViewController = driver.group
   
   func addNavBarItem(vc :UIViewController ) {
     vc.navigationItem.rightBarButtonItems = [
-      UIBarButtonItem(title: "AR", style: UIBarButtonItem.Style.plain , target: self, action: #selector(GraphNavigator.presentAR)),
-      UIBarButtonItem(title: "3D", style: UIBarButtonItem.Style.plain , target: self, action: #selector(GraphNavigator.present3D)),
-      UIBarButtonItem(title: "Info", style: UIBarButtonItem.Style.plain , target: self, action: #selector(GraphNavigator.presentInfo)),
+      UIBarButtonItem(title: "AR", style: UIBarButtonItem.Style.plain , target: self, action: #selector(CockpitNavigator.presentAR)),
+      UIBarButtonItem(title: "3D", style: UIBarButtonItem.Style.plain , target: self, action: #selector(CockpitNavigator.present3D)),
+      UIBarButtonItem(title: "Info", style: UIBarButtonItem.Style.plain , target: self, action: #selector(CockpitNavigator.presentInfo)),
     ]
   }
   
@@ -89,7 +100,7 @@ public class GraphNavigator {
       title: "Dismiss",
       style: UIBarButtonItem.Style.plain ,
       target: self,
-      action: #selector(GraphNavigator.dismiss3D)
+      action: #selector(CockpitNavigator.dismiss3D)
     )
     self.vc.present(nav, animated: true, completion: nil)
   }
@@ -98,7 +109,7 @@ public class GraphNavigator {
 //    if let item = self.store.value.items.getItem(id: id) {
 //      self.store.send(.addOrReplace(item))
 //    }
-   let newVC = CADViewController(store: self.store.scope(state: { $0.scnProvider }, action: { _ in fatalError() }))
+   let newVC = CADViewController(store: self.store.scope(state: { $0.scnProvider }, action: { _ in fatalError()}))
     
     let ulN = UINavigationController(rootViewController: newVC)
     ulN.navigationBar.prefersLargeTitles = false
@@ -106,7 +117,7 @@ public class GraphNavigator {
       title: "Dismiss",
       style: UIBarButtonItem.Style.plain ,
       target: self,
-      action: #selector(GraphNavigator.dismiss3D)
+      action: #selector(CockpitNavigator.dismiss3D)
     )
     
     self.vc.present(ulN, animated: true, completion: nil)
@@ -124,7 +135,7 @@ public class GraphNavigator {
       title: "Dismiss",
       style: UIBarButtonItem.Style.plain ,
       target: self,
-      action: #selector(GraphNavigator.dismiss3D)
+      action: #selector(CockpitNavigator.dismiss3D)
     )
     
     
