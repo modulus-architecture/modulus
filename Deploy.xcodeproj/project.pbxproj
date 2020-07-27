@@ -90,10 +90,10 @@
 		21F120C624B3F34200053F92 /* OffsetableViewCoreStateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F120C524B3F34100053F92 /* OffsetableViewCoreStateFunctions.swift */; };
 		21F120C824B3F46B00053F92 /* DeepPressGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F120C724B3F46B00053F92 /* DeepPressGestureRecognizer.swift */; };
 		21F120CA24B3F47E00053F92 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F120C924B3F47E00053F92 /* ButtonView.swift */; };
-		21F120CF24B3F67500053F92 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 21F120CE24B3F67500053F92 /* ComposableArchitecture */; };
 		D00069D4200BD08300E8D5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00069D3200BD08300E8D5F3 /* AppDelegate.swift */; };
 		D00069DB200BD08300E8D5F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D00069DA200BD08300E8D5F3 /* Assets.xcassets */; };
 		D00069DE200BD08300E8D5F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D00069DC200BD08300E8D5F3 /* LaunchScreen.storyboard */; };
+		D015B00424CD0270002CDE8D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D015B00324CD0270002CDE8D /* ComposableArchitecture */; };
 		D02391A921CC1116002C4F4A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02391A721CC108C002C4F4A /* Environment.swift */; };
 		D02FCBC0212E08AD001BD55E /* CockpitNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */; };
 		D05505F421A72074005BA9B4 /* Scaff2D->SKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05505F221A72074005BA9B4 /* Scaff2D->SKNode.swift */; };
@@ -430,7 +430,7 @@
 			files = (
 				2111C86A238B25A7000485F1 /* BlackCricket.framework in Frameworks */,
 				2111C85E238B2324000485F1 /* Layout.framework in Frameworks */,
-				21F120CF24B3F67500053F92 /* ComposableArchitecture in Frameworks */,
+				D015B00424CD0270002CDE8D /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +918,7 @@
 			);
 			name = Interface;
 			packageProductDependencies = (
-				21F120CE24B3F67500053F92 /* ComposableArchitecture */,
+				D015B00324CD0270002CDE8D /* ComposableArchitecture */,
 			);
 			productName = Interface;
 			productReference = 2111C84E238B224D000485F1 /* Interface.framework */;
@@ -1861,7 +1861,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21F120CE24B3F67500053F92 /* ComposableArchitecture */ = {
+		D015B00324CD0270002CDE8D /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 216E35C0249E1C8900C2D083 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;

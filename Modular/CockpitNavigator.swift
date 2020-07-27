@@ -16,6 +16,7 @@ import ComposableArchitecture
 
 
 /// Cockpit is view and heads up display. Like a cockpit in a plane
+/// Cockpit reducer stack. Cockpit is  the state and view that holds menu and tool bars above the level of individual 2D screen view of the graph, and is responsible for bringing the 2D graph and presenting the 3D and AR views
 public struct CockpitState : Equatable {
   var quad : QuadState<ScaffGraph>
   var item : Item<ScaffGraph>
@@ -49,6 +50,16 @@ public let cockpitReducer = Reducer<CockpitState, CockpitAction, CockpitEnvironm
    quadReducer().pullback(state: \CockpitState.quad, action: /CockpitAction.quad, environment: { appEnv in QuadEnvironment() }),
    Reducer{
       (state, action, env) in
+    
+    switch action {
+    case .quad(.front),
+         .quad(.side),
+         .quad(.plan),
+         .quad(.rotated):
+        state.item.content = state.quad.planState.spriteState.graph
+        return .none
+    case .quad(.page): return .none
+    }
       return .none
 })
 

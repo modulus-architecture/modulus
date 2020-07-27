@@ -163,6 +163,7 @@ let appReducer =  Reducer<AppState, AppAction, AppEnvironment>
         return .none
         
     case .interfaceAction: return .none
+      
     }
       }
 )
