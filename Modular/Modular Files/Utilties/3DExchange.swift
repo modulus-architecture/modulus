@@ -7,13 +7,10 @@
 //
 
 import Foundation
-import Volume
 import GrapheNaked
 import Singalong
 
-struct AScaffProvider : ScaffProvider {
-  var scaff: [ScaffMember]
-}
+
 
 extension Point3 {
   var asDoubleTuple: (x: Double, y: Double, z: Double)
@@ -21,12 +18,12 @@ extension Point3 {
     return (x: Double(x), y: Double(y), z: Double(z))
   }
 }
-extension Volume.ScaffType.Axis {
-  init (_ axis: Axis)
+extension ScaffType3D.Axis {
+   init (_ axis: GrapheNaked.Axis)
   {
     switch axis{
-    case .y : self = Volume.ScaffType.Axis.y
-    case .x : self = Volume.ScaffType.Axis.x
+    case .y : self = ScaffType3D.Axis.y
+    case .x : self = ScaffType3D.Axis.x
     }
   }
 }
@@ -51,10 +48,10 @@ func members(graph: ScaffGraph) -> [ScaffMember] {
       let seg3 = (graph.grid, edge) |> segment3
       guard let axis = seg3|>axis, let run = (seg3|>run) else { return [] }
       return [ScaffMember(
-        type: Volume.ScaffType.diag(
+        type: ScaffType3D.diag(
           run: graph_measure(run),
           rise: graph_measure(seg3|>rise),
-          axis: Volume.ScaffType.Axis( axis )
+          axis: ScaffType3D.Axis( axis )
         ),
         position: edge.p1.toPoint3(graph.grid).asDoubleTuple
         )]
@@ -68,7 +65,7 @@ func members(graph: ScaffGraph) -> [ScaffMember] {
       return [ScaffMember(
         type: .ledger(
           size: graph_measure((seg3|>run)!),
-          axis: Volume.ScaffType.Axis( (seg3|>axis)! ) ),
+          axis: ScaffType3D.Axis( (seg3|>axis)! ) ),
         position: edge.p1.toPoint3(graph.grid).asDoubleTuple)]
     case .standardGroup:
       let seg3 = (graph.grid, edge) |> segment3

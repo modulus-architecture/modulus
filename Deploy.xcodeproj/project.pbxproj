@@ -36,6 +36,28 @@
 		213DC760238CA9F90062AA43 /* Tenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DC75C238CA9F90062AA43 /* Tenting.swift */; };
 		2147609C23BD8183001C7FAD /* QuadTentState+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2147609B23BD817E001C7FAD /* QuadTentState+Init.swift */; };
 		214A084E2383A85E0016FE80 /* TentViewMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213B4FBC23839EEF00E87F5A /* TentViewMaps.swift */; };
+		216548CA24CE762D0049FA4D /* CADViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165474524CE762A0049FA4D /* CADViewController.swift */; };
+		216548E624CE7C6C0049FA4D /* ARScnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548E524CE7C6B0049FA4D /* ARScnViewController.swift */; };
+		216548E824CE7CB00049FA4D /* ScaffMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548E724CE7CB00049FA4D /* ScaffMember.swift */; };
+		216548EA24CE7D870049FA4D /* ScaffMember+Element3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548E924CE7D870049FA4D /* ScaffMember+Element3D.swift */; };
+		216548EC24CE7DB40049FA4D /* Measurement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548EB24CE7DB40049FA4D /* Measurement+Extensions.swift */; };
+		216548EE24CE7E130049FA4D /* Element3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548ED24CE7E130049FA4D /* Element3D.swift */; };
+		216548F024CE7E410049FA4D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548EF24CE7E410049FA4D /* Node.swift */; };
+		216548F224CE7EA60049FA4D /* ScaffFabricationShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548F124CE7EA60049FA4D /* ScaffFabricationShop.swift */; };
+		216548F424CE7EEB0049FA4D /* SCNRelatedOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548F324CE7EEB0049FA4D /* SCNRelatedOperators.swift */; };
+		216548F624CE7F0F0049FA4D /* CADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548F524CE7F0F0049FA4D /* CADView.swift */; };
+		216548F824CE7F300049FA4D /* ProductionShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548F724CE7F300049FA4D /* ProductionShop.swift */; };
+		216548FA24CE7F660049FA4D /* CameraPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548F924CE7F660049FA4D /* CameraPane.swift */; };
+		216548FC24CE7FAC0049FA4D /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548FB24CE7FAC0049FA4D /* Camera.swift */; };
+		216548FE24CE7FD50049FA4D /* ScaffProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216548FD24CE7FD50049FA4D /* ScaffProvider.swift */; };
+		2165490324CE800F0049FA4D /* SCNContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165490024CE800F0049FA4D /* SCNContentProvider.swift */; };
+		2165490424CE800F0049FA4D /* SCNProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165490124CE800F0049FA4D /* SCNProvider.swift */; };
+		2165490524CE800F0049FA4D /* SCNBounder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165490224CE800F0049FA4D /* SCNBounder.swift */; };
+		2165490724CE80C10049FA4D /* Fabrication+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2165490624CE80C10049FA4D /* Fabrication+Comparable.swift */; };
+		2165490A24CE877A0049FA4D /* Scaff From Ed.dae in Resources */ = {isa = PBXBuildFile; fileRef = 2165490824CE877A0049FA4D /* Scaff From Ed.dae */; settings = {ATTRIBUTES = ("--decompress", ); }; };
+		2165490B24CE877A0049FA4D /* Scaffolding Parts.scn in Resources */ = {isa = PBXBuildFile; fileRef = 2165490924CE877A0049FA4D /* Scaffolding Parts.scn */; };
+		2165490C24CE89A90049FA4D /* Scaff From Ed.dae in Resources */ = {isa = PBXBuildFile; fileRef = 2165490824CE877A0049FA4D /* Scaff From Ed.dae */; };
+		2165490D24CE89A90049FA4D /* Scaffolding Parts.scn in Resources */ = {isa = PBXBuildFile; fileRef = 2165490924CE877A0049FA4D /* Scaffolding Parts.scn */; };
 		2166F9CE238CECC7008E0FF6 /* GrapheNaked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */; };
 		2166F9CF238CECC7008E0FF6 /* GrapheNaked.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2183F24323CC1D41005924D4 /* QuadScaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2183F24223CC1D41005924D4 /* QuadScaffView.swift */; };
@@ -128,7 +150,6 @@
 		D0CD290B214496D1008498B7 /* BlackCricket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D09F3671210D0C4200D38F4C /* BlackCricket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD290C214496D1008498B7 /* Modular.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F58CF4210E201200AACC8F /* Modular.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD290D214496D1008498B7 /* Make2D.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327A21336E31009BBDD9 /* Make2D.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D0CD290E214496D1008498B7 /* Volume.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327821336E2A009BBDD9 /* Volume.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD290F214496D1008498B7 /* OffsetableCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327621336E22009BBDD9 /* OffsetableCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2911214496D1008498B7 /* Layout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327221336E16009BBDD9 /* Layout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2912214496D1008498B7 /* Geo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327021336E0D009BBDD9 /* Geo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -141,7 +162,6 @@
 		D0F3327121336E0D009BBDD9 /* Geo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327021336E0D009BBDD9 /* Geo.framework */; };
 		D0F3327321336E16009BBDD9 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327221336E16009BBDD9 /* Layout.framework */; };
 		D0F3327721336E22009BBDD9 /* OffsetableCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327621336E22009BBDD9 /* OffsetableCore.framework */; };
-		D0F3327921336E2A009BBDD9 /* Volume.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327821336E2A009BBDD9 /* Volume.framework */; };
 		D0F3327B21336E31009BBDD9 /* Make2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327A21336E31009BBDD9 /* Make2D.framework */; };
 		D0F58CE9210E197600AACC8F /* UIKit+Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09F3665210D04F100D38F4C /* UIKit+Grasshopper.swift */; };
 		D0F58CEC210E1DF500AACC8F /* Primitive+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1BB02089394300775312 /* Primitive+UIKit.swift */; };
@@ -272,7 +292,6 @@
 				D0CD290B214496D1008498B7 /* BlackCricket.framework in Embed Frameworks */,
 				D0CD290C214496D1008498B7 /* Modular.framework in Embed Frameworks */,
 				D0CD290D214496D1008498B7 /* Make2D.framework in Embed Frameworks */,
-				D0CD290E214496D1008498B7 /* Volume.framework in Embed Frameworks */,
 				D0CD290F214496D1008498B7 /* OffsetableCore.framework in Embed Frameworks */,
 				2166F9CF238CECC7008E0FF6 /* GrapheNaked.framework in Embed Frameworks */,
 				D0CD2911214496D1008498B7 /* Layout.framework in Embed Frameworks */,
@@ -308,6 +327,26 @@
 		213DC75C238CA9F90062AA43 /* Tenting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tenting.swift; sourceTree = "<group>"; };
 		2147609523B94507001C7FAD /* TentAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentAppTests.swift; sourceTree = "<group>"; };
 		2147609B23BD817E001C7FAD /* QuadTentState+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuadTentState+Init.swift"; sourceTree = "<group>"; };
+		2165474524CE762A0049FA4D /* CADViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CADViewController.swift; sourceTree = "<group>"; };
+		216548E524CE7C6B0049FA4D /* ARScnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARScnViewController.swift; sourceTree = "<group>"; };
+		216548E724CE7CB00049FA4D /* ScaffMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaffMember.swift; sourceTree = "<group>"; };
+		216548E924CE7D870049FA4D /* ScaffMember+Element3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScaffMember+Element3D.swift"; sourceTree = "<group>"; };
+		216548EB24CE7DB40049FA4D /* Measurement+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+Extensions.swift"; sourceTree = "<group>"; };
+		216548ED24CE7E130049FA4D /* Element3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element3D.swift; sourceTree = "<group>"; };
+		216548EF24CE7E410049FA4D /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		216548F124CE7EA60049FA4D /* ScaffFabricationShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaffFabricationShop.swift; sourceTree = "<group>"; };
+		216548F324CE7EEB0049FA4D /* SCNRelatedOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRelatedOperators.swift; sourceTree = "<group>"; };
+		216548F524CE7F0F0049FA4D /* CADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CADView.swift; sourceTree = "<group>"; };
+		216548F724CE7F300049FA4D /* ProductionShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionShop.swift; sourceTree = "<group>"; };
+		216548F924CE7F660049FA4D /* CameraPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPane.swift; sourceTree = "<group>"; };
+		216548FB24CE7FAC0049FA4D /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		216548FD24CE7FD50049FA4D /* ScaffProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaffProvider.swift; sourceTree = "<group>"; };
+		2165490024CE800F0049FA4D /* SCNContentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNContentProvider.swift; sourceTree = "<group>"; };
+		2165490124CE800F0049FA4D /* SCNProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNProvider.swift; sourceTree = "<group>"; };
+		2165490224CE800F0049FA4D /* SCNBounder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNBounder.swift; sourceTree = "<group>"; };
+		2165490624CE80C10049FA4D /* Fabrication+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fabrication+Comparable.swift"; sourceTree = "<group>"; };
+		2165490824CE877A0049FA4D /* Scaff From Ed.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "Scaff From Ed.dae"; sourceTree = "<group>"; };
+		2165490924CE877A0049FA4D /* Scaffolding Parts.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "Scaffolding Parts.scn"; sourceTree = "<group>"; };
 		2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GrapheNaked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2183F24223CC1D41005924D4 /* QuadScaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadScaffView.swift; sourceTree = "<group>"; };
 		21BCBD4A23819DF700644B14 /* Misc Utilities Mine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Misc Utilities Mine"; sourceTree = "<group>"; };
@@ -460,7 +499,6 @@
 			files = (
 				D06C66BE2198D8BF005D5F35 /* FormsCopy.framework in Frameworks */,
 				D0F3327B21336E31009BBDD9 /* Make2D.framework in Frameworks */,
-				D0F3327921336E2A009BBDD9 /* Volume.framework in Frameworks */,
 				D0F3327721336E22009BBDD9 /* OffsetableCore.framework in Frameworks */,
 				D0F3327321336E16009BBDD9 /* Layout.framework in Frameworks */,
 				2166F9CE238CECC7008E0FF6 /* GrapheNaked.framework in Frameworks */,
@@ -560,6 +598,41 @@
 				2147609B23BD817E001C7FAD /* QuadTentState+Init.swift */,
 			);
 			path = QuadTent;
+			sourceTree = "<group>";
+		};
+		2165453E24CE75A40049FA4D /* Volume */ = {
+			isa = PBXGroup;
+			children = (
+				216548E524CE7C6B0049FA4D /* ARScnViewController.swift */,
+				2165474524CE762A0049FA4D /* CADViewController.swift */,
+				216548E724CE7CB00049FA4D /* ScaffMember.swift */,
+				216548E924CE7D870049FA4D /* ScaffMember+Element3D.swift */,
+				216548F124CE7EA60049FA4D /* ScaffFabricationShop.swift */,
+				216548ED24CE7E130049FA4D /* Element3D.swift */,
+				216548EF24CE7E410049FA4D /* Node.swift */,
+				216548F324CE7EEB0049FA4D /* SCNRelatedOperators.swift */,
+				216548EB24CE7DB40049FA4D /* Measurement+Extensions.swift */,
+				216548F524CE7F0F0049FA4D /* CADView.swift */,
+				216548F924CE7F660049FA4D /* CameraPane.swift */,
+				216548FB24CE7FAC0049FA4D /* Camera.swift */,
+				2165490624CE80C10049FA4D /* Fabrication+Comparable.swift */,
+				216548F724CE7F300049FA4D /* ProductionShop.swift */,
+				216548FD24CE7FD50049FA4D /* ScaffProvider.swift */,
+				2165490824CE877A0049FA4D /* Scaff From Ed.dae */,
+				2165490924CE877A0049FA4D /* Scaffolding Parts.scn */,
+				216548FF24CE800F0049FA4D /* Protocols */,
+			);
+			path = Volume;
+			sourceTree = "<group>";
+		};
+		216548FF24CE800F0049FA4D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2165490024CE800F0049FA4D /* SCNContentProvider.swift */,
+				2165490124CE800F0049FA4D /* SCNProvider.swift */,
+				2165490224CE800F0049FA4D /* SCNBounder.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		21BCBD4923819CA400644B14 /* Modular */ = {
@@ -715,6 +788,7 @@
 		D00069C7200BD08300E8D5F3 = {
 			isa = PBXGroup;
 			children = (
+				2165453E24CE75A40049FA4D /* Volume */,
 				21BCBD652381A0F800644B14 /* Info.plist */,
 				D03E03F520125DF8002D47F3 /* BlackCricket */,
 				2111C84F238B224D000485F1 /* Interface */,
@@ -1108,6 +1182,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2165490C24CE89A90049FA4D /* Scaff From Ed.dae in Resources */,
+				2165490D24CE89A90049FA4D /* Scaffolding Parts.scn in Resources */,
 				D00069DE200BD08300E8D5F3 /* LaunchScreen.storyboard in Resources */,
 				D00069DB200BD08300E8D5F3 /* Assets.xcassets in Resources */,
 				D0B69D262043632D00AEA01B /* GameScene.sks in Resources */,
@@ -1132,6 +1208,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2165490A24CE877A0049FA4D /* Scaff From Ed.dae in Resources */,
+				2165490B24CE877A0049FA4D /* Scaffolding Parts.scn in Resources */,
 				21BCBD662381A3EB00644B14 /* Media.xcassets in Resources */,
 				21BCBD4B23819DF700644B14 /* Misc Utilities Mine in Resources */,
 			);
@@ -1219,11 +1297,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F58D02210E202A00AACC8F /* ModularAdapters.swift in Sources */,
+				2165490724CE80C10049FA4D /* Fabrication+Comparable.swift in Sources */,
 				21C33EDE23FA258000F7C5BF /* UIView+Image.swift in Sources */,
 				213DC75D238CA9F90062AA43 /* Scaffolding.swift in Sources */,
 				D05505F421A72074005BA9B4 /* Scaff2D->SKNode.swift in Sources */,
+				216548EE24CE7E130049FA4D /* Element3D.swift in Sources */,
 				D02FCBC0212E08AD001BD55E /* CockpitNavigator.swift in Sources */,
+				216548CA24CE762D0049FA4D /* CADViewController.swift in Sources */,
 				21BCBD5223819F3800644B14 /* 3DExchange.swift in Sources */,
+				216548F824CE7F300049FA4D /* ProductionShop.swift in Sources */,
+				216548E824CE7CB00049FA4D /* ScaffMember.swift in Sources */,
 				D0FD710521172C2600B27092 /* Changeset.swift in Sources */,
 				D075D8BA21C9EB35003AC600 /* ViewMap-Grid2D.swift in Sources */,
 				213DC760238CA9F90062AA43 /* Tenting.swift in Sources */,
@@ -1236,32 +1319,45 @@
 				21BCBD5623819F4700644B14 /* CGRect+Inset.swift in Sources */,
 				D0B1BC3D21A6F97400991F16 /* FileIO.swift in Sources */,
 				D0F58D01210E202900AACC8F /* Scaff2D.swift in Sources */,
+				216548EC24CE7DB40049FA4D /* Measurement+Extensions.swift in Sources */,
 				D0B1BC3A21A6F90C00991F16 /* Result.swift in Sources */,
 				D05505F621A72262005BA9B4 /* C2Edge->Scaff2D.swift in Sources */,
 				D0F58D0C210E207300AACC8F /* ViewDiagramDriver.swift in Sources */,
 				2131887B23CFBE850093CD75 /* ScallopComposite.swift in Sources */,
 				2131887723CFB0310093CD75 /* ScallopGraph.swift in Sources */,
+				2165490524CE800F0049FA4D /* SCNBounder.swift in Sources */,
+				216548FE24CE7FD50049FA4D /* ScaffProvider.swift in Sources */,
+				216548E624CE7C6C0049FA4D /* ARScnViewController.swift in Sources */,
 				213DC753238CA9910062AA43 /* ScaffGraph.swift in Sources */,
 				2131887923CFBB710093CD75 /* ScallopGraphMap.swift in Sources */,
 				21BCBD5E23819F8200644B14 /* Measurement+Formatter.swift in Sources */,
+				216548F224CE7EA60049FA4D /* ScaffFabricationShop.swift in Sources */,
+				216548F024CE7E410049FA4D /* Node.swift in Sources */,
 				2131887D23D0FDA80093CD75 /* QuadScallopInit.swift in Sources */,
 				D08F2AC321D2EB130080F052 /* CompositeButtons.swift in Sources */,
 				213DC757238CA9910062AA43 /* EdgePredicates.swift in Sources */,
 				D0B1BC4121A7092400991F16 /* ItemList.swift in Sources */,
 				213DC75E238CA9F90062AA43 /* SliceScaffoldingCore.swift in Sources */,
 				2131887F23D248F50093CD75 /* iPadView.swift in Sources */,
+				216548EA24CE7D870049FA4D /* ScaffMember+Element3D.swift in Sources */,
 				D07C56B9211E74F50073D7A7 /* App+FreeFunctions.swift in Sources */,
+				216548FA24CE7F660049FA4D /* CameraPane.swift in Sources */,
 				D0D21FB421A44037000FB885 /* Item.swift in Sources */,
+				2165490324CE800F0049FA4D /* SCNContentProvider.swift in Sources */,
 				D0F58D06210E207300AACC8F /* App.swift in Sources */,
 				D0F58D08210E207300AACC8F /* ViewMaps.swift in Sources */,
 				D0F58D04210E202A00AACC8F /* TexturedView+SKSpriteNode.swift in Sources */,
 				D02391A921CC1116002C4F4A /* Environment.swift in Sources */,
 				2183F24323CC1D41005924D4 /* QuadScaffView.swift in Sources */,
+				2165490424CE800F0049FA4D /* SCNProvider.swift in Sources */,
 				D0B1BC3F21A6F9FB00991F16 /* Mock.swift in Sources */,
+				216548FC24CE7FAC0049FA4D /* Camera.swift in Sources */,
 				2131888123D2497D0093CD75 /* QuadView.swift in Sources */,
 				D0F58D00210E202900AACC8F /* ViewFunctions.swift in Sources */,
+				216548F624CE7F0F0049FA4D /* CADView.swift in Sources */,
 				21BCBD6023819F8400644B14 /* SelectionCore.swift in Sources */,
 				D0FD71012117275400B27092 /* EditViewController.swift in Sources */,
+				216548F424CE7EEB0049FA4D /* SCNRelatedOperators.swift in Sources */,
 				21BCBD5423819F4200644B14 /* Array+PreviousNext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
