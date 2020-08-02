@@ -43,7 +43,7 @@ extension CenteredGrowState {
   }
 }
 
-import OffsetableCore
+//import OffsetableCore
 extension CenteredGrowState {
   mutating func clip() {
     let yUnits = O1(bounds: portSize.height, outerOrigin: -grow.read.contentOffset.y, outerSize: grow.read.contentSize.height, origin: grow.read.areaOfInterest.origin.y, size: grow.read.areaOfInterest.size.height)

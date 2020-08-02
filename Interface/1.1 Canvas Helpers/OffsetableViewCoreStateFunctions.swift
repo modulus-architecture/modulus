@@ -8,7 +8,7 @@
 
 import Foundation
 import Singalong
-import OffsetableCore
+//import OffsetableCore
 import Geo
 import UIKit
 

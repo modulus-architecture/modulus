@@ -28,6 +28,19 @@
 		2131887D23D0FDA80093CD75 /* QuadScallopInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2131887C23D0FDA80093CD75 /* QuadScallopInit.swift */; };
 		2131887F23D248F50093CD75 /* iPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2131887E23D248F40093CD75 /* iPadView.swift */; };
 		2131888123D2497D0093CD75 /* QuadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2131888023D2497D0093CD75 /* QuadView.swift */; };
+		2138A22424D7761B00FC1F54 /* ViewportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21724D7761A00FC1F54 /* ViewportModel.swift */; };
+		2138A22524D7761B00FC1F54 /* POSSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21824D7761A00FC1F54 /* POSSize.swift */; };
+		2138A22624D7761B00FC1F54 /* O1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21924D7761A00FC1F54 /* O1.swift */; };
+		2138A22724D7761B00FC1F54 /* POSSize+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21A24D7761A00FC1F54 /* POSSize+UIKit.swift */; };
+		2138A22824D7761B00FC1F54 /* AllTheTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21B24D7761A00FC1F54 /* AllTheTypes.swift */; };
+		2138A22924D7761B00FC1F54 /* ScrollViewAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21C24D7761A00FC1F54 /* ScrollViewAbstraction.swift */; };
+		2138A22A24D7761B00FC1F54 /* ScrollViewModel+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21D24D7761A00FC1F54 /* ScrollViewModel+UIKit.swift */; };
+		2138A22B24D7761B00FC1F54 /* ViewportAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21E24D7761A00FC1F54 /* ViewportAbstraction.swift */; };
+		2138A22C24D7761B00FC1F54 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A21F24D7761A00FC1F54 /* WorldView.swift */; };
+		2138A22D24D7761B00FC1F54 /* SSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A22024D7761A00FC1F54 /* SSeries.swift */; };
+		2138A22E24D7761B00FC1F54 /* UIKit+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A22124D7761B00FC1F54 /* UIKit+Styling.swift */; };
+		2138A22F24D7761B00FC1F54 /* _Abstraction+ScalingGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A22224D7761B00FC1F54 /* _Abstraction+ScalingGrouping.swift */; };
+		2138A23024D7761B00FC1F54 /* ScrollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2138A22324D7761B00FC1F54 /* ScrollViewModel.swift */; };
 		213DC753238CA9910062AA43 /* ScaffGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DC74D238CA9900062AA43 /* ScaffGraph.swift */; };
 		213DC757238CA9910062AA43 /* EdgePredicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DC751238CA9900062AA43 /* EdgePredicates.swift */; };
 		213DC75D238CA9F90062AA43 /* Scaffolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DC759238CA9F90062AA43 /* Scaffolding.swift */; };
@@ -318,6 +331,21 @@
 		2131887C23D0FDA80093CD75 /* QuadScallopInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadScallopInit.swift; sourceTree = "<group>"; };
 		2131887E23D248F40093CD75 /* iPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadView.swift; sourceTree = "<group>"; };
 		2131888023D2497D0093CD75 /* QuadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadView.swift; sourceTree = "<group>"; };
+		2138A21724D7761A00FC1F54 /* ViewportModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewportModel.swift; sourceTree = "<group>"; };
+		2138A21824D7761A00FC1F54 /* POSSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POSSize.swift; sourceTree = "<group>"; };
+		2138A21924D7761A00FC1F54 /* O1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = O1.swift; sourceTree = "<group>"; };
+		2138A21A24D7761A00FC1F54 /* POSSize+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "POSSize+UIKit.swift"; sourceTree = "<group>"; };
+		2138A21B24D7761A00FC1F54 /* AllTheTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTheTypes.swift; sourceTree = "<group>"; };
+		2138A21C24D7761A00FC1F54 /* ScrollViewAbstraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewAbstraction.swift; sourceTree = "<group>"; };
+		2138A21D24D7761A00FC1F54 /* ScrollViewModel+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollViewModel+UIKit.swift"; sourceTree = "<group>"; };
+		2138A21E24D7761A00FC1F54 /* ViewportAbstraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewportAbstraction.swift; sourceTree = "<group>"; };
+		2138A21F24D7761A00FC1F54 /* WorldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
+		2138A22024D7761A00FC1F54 /* SSeries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSeries.swift; sourceTree = "<group>"; };
+		2138A22124D7761B00FC1F54 /* UIKit+Styling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+Styling.swift"; sourceTree = "<group>"; };
+		2138A22224D7761B00FC1F54 /* _Abstraction+ScalingGrouping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_Abstraction+ScalingGrouping.swift"; sourceTree = "<group>"; };
+		2138A22324D7761B00FC1F54 /* ScrollViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewModel.swift; sourceTree = "<group>"; };
+		2138A23224D7765900FC1F54 /* OffsetableCoreTests2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetableCoreTests2.swift; sourceTree = "<group>"; };
+		2138A23324D7765900FC1F54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		213B4FBC23839EEF00E87F5A /* TentViewMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentViewMaps.swift; sourceTree = "<group>"; };
 		213DC74D238CA9900062AA43 /* ScaffGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaffGraph.swift; sourceTree = "<group>"; };
 		213DC751238CA9900062AA43 /* EdgePredicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgePredicates.swift; sourceTree = "<group>"; };
@@ -577,6 +605,36 @@
 			path = Scallops;
 			sourceTree = "<group>";
 		};
+		2138A21624D775FD00FC1F54 /* Offsetable Core */ = {
+			isa = PBXGroup;
+			children = (
+				2138A21B24D7761A00FC1F54 /* AllTheTypes.swift */,
+				2138A21924D7761A00FC1F54 /* O1.swift */,
+				2138A21E24D7761A00FC1F54 /* ViewportAbstraction.swift */,
+				2138A21C24D7761A00FC1F54 /* ScrollViewAbstraction.swift */,
+				2138A22224D7761B00FC1F54 /* _Abstraction+ScalingGrouping.swift */,
+				2138A21724D7761A00FC1F54 /* ViewportModel.swift */,
+				2138A22324D7761B00FC1F54 /* ScrollViewModel.swift */,
+				2138A21D24D7761A00FC1F54 /* ScrollViewModel+UIKit.swift */,
+				2138A21824D7761A00FC1F54 /* POSSize.swift */,
+				2138A21A24D7761A00FC1F54 /* POSSize+UIKit.swift */,
+				2138A22024D7761A00FC1F54 /* SSeries.swift */,
+				2138A22124D7761B00FC1F54 /* UIKit+Styling.swift */,
+				2138A21F24D7761A00FC1F54 /* WorldView.swift */,
+			);
+			path = "Offsetable Core";
+			sourceTree = "<group>";
+		};
+		2138A23124D7765900FC1F54 /* OffsetableCoreTests2 */ = {
+			isa = PBXGroup;
+			children = (
+				2138A23224D7765900FC1F54 /* OffsetableCoreTests2.swift */,
+				2138A23324D7765900FC1F54 /* Info.plist */,
+			);
+			name = OffsetableCoreTests2;
+			path = ../../../OffsetableCore/OffsetableCoreTests2;
+			sourceTree = "<group>";
+		};
 		213DC74A238CA9560062AA43 /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +835,8 @@
 		21F120C224B3F2EA00053F92 /* 1.1 Canvas Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2138A23124D7765900FC1F54 /* OffsetableCoreTests2 */,
+				2138A21624D775FD00FC1F54 /* Offsetable Core */,
 				21F120C924B3F47E00053F92 /* ButtonView.swift */,
 				21F120C724B3F46B00053F92 /* DeepPressGestureRecognizer.swift */,
 				21F120C524B3F34100053F92 /* OffsetableViewCoreStateFunctions.swift */,
@@ -1222,22 +1282,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2138A23024D7761B00FC1F54 /* ScrollViewModel.swift in Sources */,
 				21F120B424B3F20600053F92 /* CenteredGrow.swift in Sources */,
+				2138A22F24D7761B00FC1F54 /* _Abstraction+ScalingGrouping.swift in Sources */,
 				21F120C424B3F2FB00053F92 /* NoHitView+DebugHelpers.swift in Sources */,
 				21F120CA24B3F47E00053F92 /* ButtonView.swift in Sources */,
 				2111C862238B23B0000485F1 /* IssuedLayout.swift in Sources */,
 				21F120B824B3F21400053F92 /* CanvasSelection.swift in Sources */,
 				21F120C624B3F34200053F92 /* OffsetableViewCoreStateFunctions.swift in Sources */,
+				2138A22B24D7761B00FC1F54 /* ViewportAbstraction.swift in Sources */,
 				2111C861238B2372000485F1 /* TypedNotifications.swift in Sources */,
 				21F120AA24B3F1DF00053F92 /* Handle.swift in Sources */,
 				21F120AC24B3F1E600053F92 /* BoundedHandle.swift in Sources */,
+				2138A22624D7761B00FC1F54 /* O1.swift in Sources */,
 				2111C866238B24EB000485F1 /* Sprite2DView.swift in Sources */,
 				21F120B624B3F20E00053F92 /* AreaOfInterest.swift in Sources */,
+				2138A22E24D7761B00FC1F54 /* UIKit+Styling.swift in Sources */,
+				2138A22924D7761B00FC1F54 /* ScrollViewAbstraction.swift in Sources */,
+				2138A22724D7761B00FC1F54 /* POSSize+UIKit.swift in Sources */,
+				2138A22524D7761B00FC1F54 /* POSSize.swift in Sources */,
+				2138A22424D7761B00FC1F54 /* ViewportModel.swift in Sources */,
 				2111C85C238B22E6000485F1 /* Interface.swift in Sources */,
+				2138A22C24D7761B00FC1F54 /* WorldView.swift in Sources */,
 				2111C85B238B22B2000485F1 /* SpriteDriver.swift in Sources */,
 				21F120AE24B3F1EB00053F92 /* HandleGroup.swift in Sources */,
 				2111C870238B26B5000485F1 /* GenericViewMap.swift in Sources */,
 				21F120B024B3F1F900053F92 /* RectGroup.swift in Sources */,
+				2138A22824D7761B00FC1F54 /* AllTheTypes.swift in Sources */,
+				2138A22D24D7761B00FC1F54 /* SSeries.swift in Sources */,
+				2138A22A24D7761B00FC1F54 /* ScrollViewModel+UIKit.swift in Sources */,
 				2111C864238B2472000485F1 /* LayoutToDriver.swift in Sources */,
 				21F120B224B3F20000053F92 /* Grow.swift in Sources */,
 				21F120C824B3F46B00053F92 /* DeepPressGestureRecognizer.swift in Sources */,
