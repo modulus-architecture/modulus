@@ -319,7 +319,6 @@ class LedgerMaker : HorizontalElement3D {
     let p1 = head1.node.location.x + head1.attachmentPoint.x
     let p2 = head2.node.location.x - head2.attachmentPoint.x
     
-    print(head2.node.location.x)
     let distance =  p2 - p1
     
     // Create the tube

@@ -24,14 +24,10 @@ extension Element3D
   var processedNode : Node {
     get
     {
-      print(position)
-      
       var pNode = node
-      print(pNode.location)
       pNode.location.x += position.x
       pNode.location.y += position.z
       pNode.location.z -= position.y // Site world has z axis in the - direction
-      print(pNode.location)
       return pNode
     }
   }
