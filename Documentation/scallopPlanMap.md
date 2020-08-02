@@ -1,0 +1,5 @@
+# scallopPlanMap
+
+``` swift
+let scallopPlanMap
+```

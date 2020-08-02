@@ -1,0 +1,5 @@
+# clipSeperate
+
+``` swift
+let clipSeperate
+```

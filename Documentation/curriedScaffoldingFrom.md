@@ -1,0 +1,5 @@
+# curriedScaffoldingFrom
+
+``` swift
+let curriedScaffoldingFrom
+```

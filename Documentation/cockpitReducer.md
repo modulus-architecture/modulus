@@ -1,0 +1,5 @@
+# cockpitReducer
+
+``` swift
+let cockpitReducer
+```
