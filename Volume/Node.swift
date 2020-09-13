@@ -96,7 +96,7 @@ func MakeNode(fromLoader loader: Loadable) -> Node {
 }
 
 func MakeNode(withGeometry geometry: SCNGeometry) -> Node {
-    let tubeNode = SCNNode(geometry: (geometry as! SCNGeometry))
+    let tubeNode = SCNNode(geometry: geometry)
     return tubeNode
 }
 

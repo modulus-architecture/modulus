@@ -74,6 +74,9 @@
 		2166F9CE238CECC7008E0FF6 /* GrapheNaked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */; };
 		2166F9CF238CECC7008E0FF6 /* GrapheNaked.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2183F24323CC1D41005924D4 /* QuadScaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2183F24223CC1D41005924D4 /* QuadScaffView.swift */; };
+		21B2EDBB24DA210000C73F5B /* ScaffInfoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2EDBA24DA210000C73F5B /* ScaffInfoForm.swift */; };
+		21B2EDBC24DA218100C73F5B /* Singalong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326A21336DF6009BBDD9 /* Singalong.framework */; };
+		21B2EDBD24DA218100C73F5B /* Singalong.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326A21336DF6009BBDD9 /* Singalong.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21BCBD4B23819DF700644B14 /* Misc Utilities Mine in Resources */ = {isa = PBXBuildFile; fileRef = 21BCBD4A23819DF700644B14 /* Misc Utilities Mine */; };
 		21BCBD5223819F3800644B14 /* 3DExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCBD5123819F3800644B14 /* 3DExchange.swift */; };
 		21BCBD5423819F4200644B14 /* Array+PreviousNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCBD5323819F4200644B14 /* Array+PreviousNext.swift */; };
@@ -131,6 +134,7 @@
 		D015B00424CD0270002CDE8D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D015B00324CD0270002CDE8D /* ComposableArchitecture */; };
 		D02391A921CC1116002C4F4A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02391A721CC108C002C4F4A /* Environment.swift */; };
 		D02FCBC0212E08AD001BD55E /* CockpitNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */; };
+		D05459B62503B9700000B64B /* StructureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05459B52503B96F0000B64B /* StructureListView.swift */; };
 		D05505F421A72074005BA9B4 /* Scaff2D->SKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05505F221A72074005BA9B4 /* Scaff2D->SKNode.swift */; };
 		D05505F621A72262005BA9B4 /* C2Edge->Scaff2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05505F521A72262005BA9B4 /* C2Edge->Scaff2D.swift */; };
 		D06C66BE2198D8BF005D5F35 /* FormsCopy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06C66BD2198D8BF005D5F35 /* FormsCopy.framework */; };
@@ -163,18 +167,17 @@
 		D0CD290B214496D1008498B7 /* BlackCricket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D09F3671210D0C4200D38F4C /* BlackCricket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD290C214496D1008498B7 /* Modular.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F58CF4210E201200AACC8F /* Modular.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD290D214496D1008498B7 /* Make2D.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327A21336E31009BBDD9 /* Make2D.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D0CD290F214496D1008498B7 /* OffsetableCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327621336E22009BBDD9 /* OffsetableCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2911214496D1008498B7 /* Layout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327221336E16009BBDD9 /* Layout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2912214496D1008498B7 /* Geo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327021336E0D009BBDD9 /* Geo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2913214496D1008498B7 /* Diagrams.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326E21336E08009BBDD9 /* Diagrams.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0CD2915214496D1008498B7 /* Singalong.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326A21336DF6009BBDD9 /* Singalong.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0D21FB421A44037000FB885 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D21FB221A44037000FB885 /* Item.swift */; };
 		D0D5612B212DDA500059874B /* QuadDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D5612A212DDA500059874B /* QuadDriver.swift */; };
+		D0EFFD38250DC3C0007ABBDC /* Geo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EFFD37250DC3C0007ABBDC /* Geo.framework */; };
 		D0F3326B21336DF6009BBDD9 /* Singalong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326A21336DF6009BBDD9 /* Singalong.framework */; };
 		D0F3326F21336E08009BBDD9 /* Diagrams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3326E21336E08009BBDD9 /* Diagrams.framework */; };
 		D0F3327121336E0D009BBDD9 /* Geo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327021336E0D009BBDD9 /* Geo.framework */; };
 		D0F3327321336E16009BBDD9 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327221336E16009BBDD9 /* Layout.framework */; };
-		D0F3327721336E22009BBDD9 /* OffsetableCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327621336E22009BBDD9 /* OffsetableCore.framework */; };
 		D0F3327B21336E31009BBDD9 /* Make2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F3327A21336E31009BBDD9 /* Make2D.framework */; };
 		D0F58CE9210E197600AACC8F /* UIKit+Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09F3665210D04F100D38F4C /* UIKit+Grasshopper.swift */; };
 		D0F58CEC210E1DF500AACC8F /* Primitive+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE1BB02089394300775312 /* Primitive+UIKit.swift */; };
@@ -261,6 +264,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		21B2EDBE24DA218100C73F5B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				21B2EDBD24DA218100C73F5B /* Singalong.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		21ECD6BF23909D4F00C83C06 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,7 +319,6 @@
 				D0CD290B214496D1008498B7 /* BlackCricket.framework in Embed Frameworks */,
 				D0CD290C214496D1008498B7 /* Modular.framework in Embed Frameworks */,
 				D0CD290D214496D1008498B7 /* Make2D.framework in Embed Frameworks */,
-				D0CD290F214496D1008498B7 /* OffsetableCore.framework in Embed Frameworks */,
 				2166F9CF238CECC7008E0FF6 /* GrapheNaked.framework in Embed Frameworks */,
 				D0CD2911214496D1008498B7 /* Layout.framework in Embed Frameworks */,
 				2111C856238B224D000485F1 /* Interface.framework in Embed Frameworks */,
@@ -377,6 +390,7 @@
 		2165490924CE877A0049FA4D /* Scaffolding Parts.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "Scaffolding Parts.scn"; sourceTree = "<group>"; };
 		2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GrapheNaked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2183F24223CC1D41005924D4 /* QuadScaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadScaffView.swift; sourceTree = "<group>"; };
+		21B2EDBA24DA210000C73F5B /* ScaffInfoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaffInfoForm.swift; sourceTree = "<group>"; };
 		21BCBD4A23819DF700644B14 /* Misc Utilities Mine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Misc Utilities Mine"; sourceTree = "<group>"; };
 		21BCBD4E23819E3700644B14 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		21BCBD4F23819E3700644B14 /* GraphicsCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsCore.swift; sourceTree = "<group>"; };
@@ -435,6 +449,7 @@
 		D03E03FE20125DF8002D47F3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D04153C1202B7CA300BD7B72 /* Array+CGPoint+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CGPoint+Utility.swift"; sourceTree = "<group>"; };
 		D052B3F9211F2CE8008DD455 /* QuadPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuadPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D05459B52503B96F0000B64B /* StructureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureListView.swift; sourceTree = "<group>"; };
 		D05505F221A72074005BA9B4 /* Scaff2D->SKNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scaff2D->SKNode.swift"; sourceTree = "<group>"; };
 		D05505F521A72262005BA9B4 /* C2Edge->Scaff2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "C2Edge->Scaff2D.swift"; sourceTree = "<group>"; };
 		D06C66BB2198D89E005D5F35 /* FormsCopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FormsCopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +486,7 @@
 		D0DA9BBA203A666A0019F6EE /* PrimitiveFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveFunctions.swift; sourceTree = "<group>"; };
 		D0DE1BB02089394300775312 /* Primitive+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Primitive+UIKit.swift"; sourceTree = "<group>"; };
 		D0DE1BB22089411B00775312 /* Primitive+SpriteKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Primitive+SpriteKit.swift"; sourceTree = "<group>"; };
+		D0EFFD37250DC3C0007ABBDC /* Geo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Geo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F3326A21336DF6009BBDD9 /* Singalong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Singalong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F3326C21336E00009BBDD9 /* Graphe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Graphe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F3326E21336E08009BBDD9 /* Diagrams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Diagrams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -495,6 +511,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0EFFD38250DC3C0007ABBDC /* Geo.framework in Frameworks */,
 				2111C86A238B25A7000485F1 /* BlackCricket.framework in Frameworks */,
 				2111C85E238B2324000485F1 /* Layout.framework in Frameworks */,
 				D015B00424CD0270002CDE8D /* ComposableArchitecture in Frameworks */,
@@ -527,7 +544,6 @@
 			files = (
 				D06C66BE2198D8BF005D5F35 /* FormsCopy.framework in Frameworks */,
 				D0F3327B21336E31009BBDD9 /* Make2D.framework in Frameworks */,
-				D0F3327721336E22009BBDD9 /* OffsetableCore.framework in Frameworks */,
 				D0F3327321336E16009BBDD9 /* Layout.framework in Frameworks */,
 				2166F9CE238CECC7008E0FF6 /* GrapheNaked.framework in Frameworks */,
 				D0F3327121336E0D009BBDD9 /* Geo.framework in Frameworks */,
@@ -551,6 +567,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21B2EDBC24DA218100C73F5B /* Singalong.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +726,8 @@
 				D02391B821CC13B4002C4F4A /* ViewControllers */,
 				D0B69D2420435F3900AEA01B /* SpriteKit */,
 				D09C3C42206B32370053EE2A /* App.swift */,
+				D05459B52503B96F0000B64B /* StructureListView.swift */,
+				21B2EDBA24DA210000C73F5B /* ScaffInfoForm.swift */,
 				D02FCBBF212E08AD001BD55E /* CockpitNavigator.swift */,
 				D07C56B8211E74F50073D7A7 /* App+FreeFunctions.swift */,
 				D0F58CE6210E146F00AACC8F /* ViewMaps */,
@@ -960,6 +979,7 @@
 		D0F3326921336DF6009BBDD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0EFFD37250DC3C0007ABBDC /* Geo.framework */,
 				21ECD6D023909D7E00C83C06 /* Drawable.framework */,
 				2166F9CD238CECC7008E0FF6 /* GrapheNaked.framework */,
 				2111C85D238B2324000485F1 /* Layout.framework */,
@@ -1129,6 +1149,7 @@
 				D09F366D210D0C4200D38F4C /* Sources */,
 				D09F366E210D0C4200D38F4C /* Frameworks */,
 				D09F366F210D0C4200D38F4C /* Resources */,
+				21B2EDBE24DA218100C73F5B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1408,6 +1429,7 @@
 				216548F024CE7E410049FA4D /* Node.swift in Sources */,
 				2131887D23D0FDA80093CD75 /* QuadScallopInit.swift in Sources */,
 				D08F2AC321D2EB130080F052 /* CompositeButtons.swift in Sources */,
+				D05459B62503B9700000B64B /* StructureListView.swift in Sources */,
 				213DC757238CA9910062AA43 /* EdgePredicates.swift in Sources */,
 				D0B1BC4121A7092400991F16 /* ItemList.swift in Sources */,
 				213DC75E238CA9F90062AA43 /* SliceScaffoldingCore.swift in Sources */,
@@ -1418,6 +1440,7 @@
 				D0D21FB421A44037000FB885 /* Item.swift in Sources */,
 				2165490324CE800F0049FA4D /* SCNContentProvider.swift in Sources */,
 				D0F58D06210E207300AACC8F /* App.swift in Sources */,
+				21B2EDBB24DA210000C73F5B /* ScaffInfoForm.swift in Sources */,
 				D0F58D08210E207300AACC8F /* ViewMaps.swift in Sources */,
 				D0F58D04210E202A00AACC8F /* TexturedView+SKSpriteNode.swift in Sources */,
 				D02391A921CC1116002C4F4A /* Environment.swift in Sources */,

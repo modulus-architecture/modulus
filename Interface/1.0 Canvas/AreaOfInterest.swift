@@ -11,6 +11,8 @@ import CoreGraphics
 struct AreaOfInterestState : Equatable {
   var centered: CenteredGrowState
 }
+extension AreaOfInterestState : Codable {}
+
 extension AreaOfInterestState {
   var canvasOffset : CGPoint { self.centered.grow.read.contentOffset }
   var canvasSize : CGSize { self.centered.grow.read.contentSize }

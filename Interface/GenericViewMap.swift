@@ -53,3 +53,4 @@ public struct GenericEditingView<Holder : GraphHolder> {
     self.selectedCell = selectedCell
   }
 }
+

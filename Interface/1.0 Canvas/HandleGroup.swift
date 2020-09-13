@@ -45,6 +45,7 @@ struct HandleGroupState : Equatable {
   var left : BoundedState
   var right : BoundedState
 }
+extension HandleGroupState : Codable {}
 
 public enum HandleGroupAction {
   case top(BoundedAction)

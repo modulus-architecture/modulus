@@ -24,26 +24,19 @@ extension ScaffGraph {
 }
 
 extension Item where Content == ScaffGraph {
-  static var mock : Item<Content> = Item(content:ScaffGraph.mock, id: "Mock", name: "First Graph")
+  static var mock : Item<Content> = Item(content:ScaffGraph.mock, name: "First Graph")
 }
 
 let defaultSizes = ScaffoldingGridSizes.mock.map{$0.centimeters}
 let standardStack = curriedScaffoldingFrom(defaultSizes)
 
 
-
-extension ItemList where T == ScaffGraph {
-  static var mock : ItemList<ScaffGraph> = {
-    var list = ItemList([
-      Item(content: (100,100,450) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), id: "Mock0", name: "None Graph"),
-      Item(content: (1000,1000,100) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), id: "Mock1", name: "Four by Eight"),
-      Item(content: (500,1000,1000) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), id: "Mock2", name: "Third Graph")])
-    list.addOrReplace(item: Item(content: (500,300,1000) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), id: "Mock3", name: "Force Graph"))
-    
-    addIDToScaffGraph(itemList: &list)
-    //print("Mock ", list.getItem(id: "Mock0")?.sizePreferences)
-
-    
+extension ScaffGraph {
+  static var mockList : Array<Item<ScaffGraph>> = {
+    var list = [
+      Item(content: (100,100,450) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), name: "None Graph"),
+      Item(content: (1000,1000,100) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), name: "Four by Eight"),
+      Item(content: (500,1000,1000) |> CGSize3.init |> curriedScaffoldingFrom(defaultSizes), name: "Third Graph")]
     return list
   }()
 }

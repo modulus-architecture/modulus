@@ -30,8 +30,10 @@ public struct InterfaceState<Holder:GraphHolder> : Equatable {
     self.spriteState =  SpriteState(spriteFrame: windowBounds,
                                     scale : scale,
                                     sizePreferences: sizePreferences,
-                                    graph: graph,
-                                    editingViews: mapping )
+                                    graph: graph
+      ,
+                                    editingViews: mapping
+    )
     let currentSize = self.spriteState.viewSpaceSize
     let selection = offset + currentSize
     
@@ -47,6 +49,8 @@ public struct InterfaceState<Holder:GraphHolder> : Equatable {
   public var spriteState : SpriteState<Holder>
   public var canvasState : CanvasSelectionState
 }
+
+//extension InterfaceState : Codable {}
 
 /// Read only properties of InterfaceState
 extension InterfaceState {

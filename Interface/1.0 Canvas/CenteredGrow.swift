@@ -31,6 +31,73 @@ struct CenteredGrowState : Equatable {
     self.clip()
   }
 }
+extension CenteredGrowState : Codable {}
+extension CenteredGrowState.Setter : Encodable
+{
+  enum CodingKeys: CodingKey {
+    case beginZoom
+    case interimZoom1
+    case interimZoom2
+    case interimZoom3
+    case interimZoom4
+    case finalZoom
+    case none
+  }
+  
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    switch self {
+    case .beginZoom(let value):
+      try container.encode(value, forKey: .beginZoom)
+    case .interimZoom(let value, let pinch, let pinch2, let center):
+      
+      try container.encode(value, forKey: .interimZoom1)
+      try container.encode(pinch, forKey: .interimZoom2)
+      try container.encode(pinch2, forKey: .interimZoom3)
+      try container.encode(center, forKey: .interimZoom4)
+      
+    case .finalZoom(let value):
+      try container.encode(value, forKey: .finalZoom)
+    case .none:
+      try container.encode(true, forKey: .none)
+    }
+  }
+}
+
+
+extension CenteredGrowState.Setter: Decodable {
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    do {
+      let leftValue =  try container.decode(CGVector.self, forKey: .beginZoom)
+      self = .beginZoom(initalOffset: leftValue)
+    }
+    catch {
+      do {
+        let value =  try container.decode(CGVector.self, forKey: .interimZoom1)
+        let value2 = try container.decode(CGPoint.self, forKey: .interimZoom2)
+        let value3 = try container.decode(CGPoint.self, forKey: .interimZoom3)
+        let value4 = try container.decode(CGPoint.self, forKey: .interimZoom4)
+        
+        self = .interimZoom(initalOffset: value, pinch1: value2, pinch2: value3, center: value4)
+      }
+      catch {
+        do {
+          let value =  try container.decode(CGPoint.self, forKey: .finalZoom)
+          
+          self = .finalZoom(childDelta: value)
+        }
+        catch {
+          let _ =  try container.decode(Bool.self, forKey: .none)
+          
+          self = .none
+        }
+      }
+      
+    }
+  }
+}
+
 
 extension CenteredGrowState {
   var scale : CGFloat {

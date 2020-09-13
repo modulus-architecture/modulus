@@ -42,10 +42,10 @@ struct BoundedHandleViewTesterUI : UIViewControllerRepresentable {
 struct BoundedState : Equatable {
    static func == (lhs: BoundedState, rhs: BoundedState) -> Bool {
       if lhs.boundary == rhs.boundary,
-         lhs.handle == rhs.handle,
-         lhs.status.0 == rhs.status.0,
-      lhs.status.1 == rhs.status.1,
-      lhs.status.2 == rhs.status.2,
+        lhs.handle == rhs.handle,
+        lhs.status.hor == rhs.status.hor,
+        lhs.status.ver == rhs.status.ver,
+        lhs.status.vec == rhs.status.vec,
          lhs.timerFiring == rhs.timerFiring {
          return true
       } else { return false}
@@ -53,28 +53,40 @@ struct BoundedState : Equatable {
    
   var boundary : CGRect
   var handle : HandleState
-  var status : (Hor, Ver, CGVector)
-   enum Hor : Equatable{
-    case leftOf
-    case rightOf
-    case within
+  var status : Status
+  struct Status {
+    var hor : Hor
+    var ver : Ver
+    var vec : CGVector
+    enum Hor : String, Equatable {
+      case leftOf
+      case rightOf
+      case within
+    }
+    enum Ver : String, Equatable{
+      case above
+      case below
+      case within
+    }
   }
-  enum Ver : Equatable{
-    case above
-    case below
-    case within
-  }
+   
   fileprivate var timerFiring : Bool = false
   init(boundary: CGRect, handle: HandleState) {
     self.boundary = boundary
     self.handle = handle
     let (h, v, d, _)  = withinStatus(boundary: boundary, point: handle.point)
-    self.status = (h, v, d)
+    self.status = Status(hor: h, ver: v, vec: d)
   }
 }
+extension BoundedState : Codable {}
+extension BoundedState.Status : Codable {}
+extension BoundedState.Status.Hor : Codable {}
+extension BoundedState.Status.Ver : Codable {}
 
-func withinStatus(boundary: CGRect, point: CGPoint) -> (BoundedState.Hor, BoundedState.Ver, CGVector, clampedPoint: CGPoint) {
-  let hor : BoundedState.Hor
+
+
+func withinStatus(boundary: CGRect, point: CGPoint) -> (BoundedState.Status.Hor, BoundedState.Status.Ver, CGVector, clampedPoint: CGPoint) {
+  let hor : BoundedState.Status.Hor
   if point.x < boundary.minX {
     hor = .leftOf
   } else if point.x > boundary.maxX {
@@ -83,7 +95,7 @@ func withinStatus(boundary: CGRect, point: CGPoint) -> (BoundedState.Hor, Bounde
     hor = .within
   }
   
-  let ver : BoundedState.Ver
+  let ver : BoundedState.Status.Ver
   if point.y < boundary.minY {
     ver = .above
   } else if point.y > boundary.maxY {
@@ -118,7 +130,7 @@ let boundedReducer = Reducer<BoundedState,BoundedAction, BoundedEnvironment>.com
     switch action {
     case .handle(.didMoveFinger):
       let stats = withinStatus(boundary: state.boundary, point: state.handle.point)
-      state.status = (stats.0, stats.1, stats.2)
+      state.status = .init(hor: stats.0, ver: stats.1, vec: stats.2)
       
       if stats.0 == .leftOf || stats.0 == .rightOf ||
         stats.1 == .above || stats.1 == .below {

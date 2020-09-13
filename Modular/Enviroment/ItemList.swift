@@ -41,26 +41,27 @@ struct ItemList<T:Equatable> : Equatable {
   func getItem(id: ID ) -> Item<T>? {
     return store[id]?.item
   }
-  
-  mutating func addOrReplace(item: Item<T>) {
+}
+
+import ComposableArchitecture
+extension IdentifiedArrayOf {
+  mutating func addOrReplace(item: Element) {
    
-    
-    if let previous = store[item.id] {
-      store[item.id] = IndexGroup(item: item, index: previous.index)
+    let existsAt = self.elements.firstIndex { (element) -> Bool in
+      element[keyPath: self.id] ==  item[keyPath: self.id]
+    }
+  
+    if let index = existsAt {
+      self.remove(at: index)
+      self.insert(item, at: index)
     }
     else {
-      let lastGreatestIndex = store.reduce(0) { (result, next) -> Int in
-        return result < next.value.index
-          ? next.value.index
-          : result
-      }
-      
-      store[item.id] = IndexGroup(item: item, index: lastGreatestIndex + 1)
+      self.insert(item, at: self.elements.count)
     }
   }
   
 }
-extension ItemList.IndexGroup : Codable where T : Codable { }
-extension ItemList : Codable where T : Codable { }
+//extension ItemList.IndexGroup : Codable where T : Codable { }
+//extension ItemList : Codable where T : Codable { }
 
 

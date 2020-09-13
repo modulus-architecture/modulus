@@ -33,21 +33,22 @@ public struct ReadScrollState : Equatable {
   var areaOfInterest : CGRect
   var zoomScale: CGFloat
 }
+extension ReadScrollState : Codable {}
 
-struct GrowState : Equatable {
+
+struct GrowState : Equatable, Codable {
   var read: ReadScrollState
   var drag: Drag
   var zoom: Zoom
 }
 
-enum Drag {
+enum Drag : String, Codable {
   case dragging
   case decelerating
   case none
 }
 
-
-enum Zoom {
+enum Zoom : String, Codable {
   case zooming
   case none
 }

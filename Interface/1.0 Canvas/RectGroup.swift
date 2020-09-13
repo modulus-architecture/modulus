@@ -50,6 +50,7 @@ struct RectGroupState : Equatable {
     )
   }
 }
+extension RectGroupState : Codable {}
 
 public enum RectGroupAction {
   case handles(HandleGroupAction)
@@ -110,8 +111,8 @@ let rectGroupReducer = Reducer<RectGroupState, RectGroupAction, RectGroupEnviron
       state.handles.bottom.handle.point = state.rect.bottomCenter
       
     case .handles(.top(.timerUpdate)):
-      if state.handles.top.status.1 == .above {
-        let delta = state.handles.top.status.2
+      if state.handles.top.status.ver == .above {
+        let delta = state.handles.top.status.vec
         state.rect.origin.y = state.handles.top.handle.point.y + delta.dy
         state.rect.size.height = state.handles.bottom.handle.point.y - state.handles.top.handle.point.y + abs(delta.dy)
         state.handles.bottom.handle.point += -delta
@@ -119,8 +120,8 @@ let rectGroupReducer = Reducer<RectGroupState, RectGroupAction, RectGroupEnviron
       
       
     case .handles(.bottom(.timerUpdate)):
-      if state.handles.bottom.status.1 == .below {
-        let delta = state.handles.bottom.status.2
+      if state.handles.bottom.status.ver == .below {
+        let delta = state.handles.bottom.status.vec
         state.rect.size.height = abs(state.handles.bottom.handle.point.y - state.handles.top.handle.point.y) + abs(delta.dy)
         state.rect.origin.y = state.handles.bottom.handle.point.y + delta.dy - state.rect.size.height
 
@@ -128,16 +129,16 @@ let rectGroupReducer = Reducer<RectGroupState, RectGroupAction, RectGroupEnviron
       }
       
     case .handles(.left(.timerUpdate)):
-      if state.handles.left.status.0 == .leftOf {
-        let delta = state.handles.left.status.2
+      if state.handles.left.status.hor == .leftOf {
+        let delta = state.handles.left.status.vec
         state.rect.origin.x = state.handles.left.handle.point.x + delta.dx
         state.rect.size.width = state.handles.right.handle.point.x - state.handles.left.handle.point.x + abs(delta.dx)
         state.handles.right.handle.point += -delta
       }
       
     case .handles(.right(.timerUpdate)):
-      if state.handles.right.status.0 == .rightOf {
-        let delta = state.handles.right.status.2
+      if state.handles.right.status.hor == .rightOf {
+        let delta = state.handles.right.status.vec
         state.rect.origin.x = state.handles.left.handle.point.x + delta.dx
         state.rect.size.width = state.handles.right.handle.point.x - state.handles.left.handle.point.x + abs(delta.dx)
         state.handles.right.handle.point += -delta

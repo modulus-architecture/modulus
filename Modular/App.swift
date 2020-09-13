@@ -41,54 +41,6 @@ extension ScaffGraph {
 
 
 
-
-let showPreviewForm: Form<Item<ScaffGraph>> =
-  sections([
-    section(
-      ScaffoldingGridSizes.eventMetric.map { option in
-        optionSetCell(title: option.label, option: option, keyPath: \.sizePreferences)
-      }
-    ),
-    section(
-      ScaffoldingGridSizes.us.map { option in
-        optionSetCell(title: option.label, option: option, keyPath: \.sizePreferences)
-      })
-    ])
-
-let aSection : Element<Section, Item<ScaffGraph>> = section([
-detailTextCell(title: "Notification", keyPath: \.sizePreferences.text, form: showPreviewForm)
-], isVisible: \.isEnabled)
-
-
-
-let colorsForm: Form<Item<ScaffGraph>> =
-  sections([
-    section([
-     nestedTextField(title: "Name", keyPath: \.name)
-     ]),
-    section([
-      labelCell(title: "Ledgers", label:  intLabel(keyPath: \.content.ledgers), leftAligned: false),
-      labelCell(title: "Diags", label:  intLabel(keyPath: \.content.diags), leftAligned: false),
-      labelCell(title: "Collars", label:  intLabel(keyPath: \.content.collars), leftAligned: false),
-      labelCell(title: "Standards", label:  intLabel(keyPath: \.content.standards), leftAligned: false)
-      ]),
-    section([
-      labelCell(title: "Width", label:  dimLabel(keyPath: \.content.width, formatter: metricFormatter), leftAligned: false),
-      labelCell(title: "Depth", label:  dimLabel(keyPath: \.content.depth, formatter: metricFormatter), leftAligned: false),
-      labelCell(title: "Height", label:  dimLabel(keyPath: \.content.height, formatter: metricFormatter), leftAligned: false),
-      ]),
-    section([
-      labelCell(title: "Width", label:  dimLabel(keyPath: \.content.width, formatter: imperialFormatter), leftAligned: false),
-      labelCell(title: "Depth", label:  dimLabel(keyPath: \.content.depth, formatter: imperialFormatter), leftAligned: false),
-      labelCell(title: "Height", label:  dimLabel(keyPath: \.content.height, formatter: imperialFormatter), leftAligned: false),
-
-      ]),
-    section([
-      detailTextCell(title: "Bay Sizes", keyPath: \.sizePreferences.text, form: showPreviewForm)
-      ], isVisible: \.isEnabled)
-    
-    ])
-
 final class Cell : UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -111,7 +63,8 @@ func createCell(anItem:Item<ScaffGraph> , cell: Cell) -> Cell {
     }
   
   cell.textLabel?.text = anItem.name
-  let formatter = anItem.sizePreferences.mostlyMetric ? metricFormatter : imperialFormatter
+  //let formatter = anItem.sizePreferences.mostlyMetric ? metricFormatter : imperialFormatter
+  let formatter =  imperialFormatter
   cell.detailTextLabel?.text = "\(anItem.content.width |> formatter) x \(anItem.content.depth |> formatter) x \(anItem.content.height |> formatter)"
   cell.accessoryType = .detailDisclosureButton
   return cell
@@ -123,18 +76,20 @@ import Interface
 
 
 struct AppState: Equatable {
-  var quadState : CockpitState?
-  var items : ItemList<ScaffGraph>
+ // var items : ItemList<ScaffGraph>
+  var todos: IdentifiedArrayOf<Item<ScaffGraph>>
 }
 
+
 enum AppAction {
-  case itemSelected(Item<ScaffGraph>)
+  // case itemSelected(Item<ScaffGraph>)
   
   case addOrReplace(Item<ScaffGraph>)
   
-  case setItems(ItemList<ScaffGraph>)
-  
-  case interfaceAction(CockpitAction)
+  case setItems(IdentifiedArrayOf<Item<ScaffGraph>>)
+    
+  case todo(id: UUID, action: StructureListAction)
+
 }
 
 struct AppEnvironment {
@@ -144,61 +99,132 @@ struct AppEnvironment {
 
 let appReducer =  Reducer<AppState, AppAction, AppEnvironment>
    .combine(
-      cockpitReducer.pullback(state: \AppState.quadState!, action: /AppAction.interfaceAction, environment: { appEnv in CockpitEnvironment() }),
       Reducer{ (state: inout AppState, action: AppAction, env: AppEnvironment) -> Effect<AppAction, Never> in
     switch action {
-      case let .itemSelected(item):
-        state.quadState = CockpitState(quad:QuadScaffState(graph: item.content,
-                                                          size: Current.screen.size,
-                                                          sizePreferences: item.sizePreferences.toCentimeterFloats),
-                                      item: item)
-        return .none
+//      case let .itemSelected(item):
+//
+//        let sizePref = item.baySet.map{ item.baySizes[$0] }.map{ $0.centimeters }
+//
+//        state.quadState = CockpitState(quad:QuadScaffState(graph: item.content,
+//                                                          size: Current.screen.size,
+//                                                          sizePreferences: sizePref),
+//                                       item: item.content)
+//        return .none
       case let .addOrReplace(item):
-        state.items.addOrReplace(item: item)
+        state.todos.addOrReplace(item: item)
         return .none
         
       case let .setItems(itemList):
-        state.items = itemList
+        state.todos = itemList
         return .none
-        
-    case .interfaceAction: return .none
-      
-    }
-      }
+              
+    case .todo(id: let id, action: let action):
+      return .none
+        }
+    },
+      structureListReducer.forEach(
+      state: \AppState.todos,
+      action: /AppAction.todo(id:action:),
+      environment: { _ in StructureListEnvironment() }
+    )
 )
 
 
+import SwiftUI
 
+public struct AppView : View {
+  
+  var store: Store<AppState,AppAction>
+      
+  public var body: some View {
+    WithViewStore (self.store) { viewStore in
+            ZStack{
+              NavigationView{
+                List{
+                  ForEachStore( self.store.scope(state: { $0.todos }, action: AppAction.todo(id:action:)), content: StructureListView.init(store:))
+                      
+                  //.onDelete { viewStore.send(.delete($0)) }
+                  //.onMove { viewStore.send(.move($0, $1)) }
 
+                  
+                  
+                }
+                .navigationBarItems(
+                  trailing: HStack(spacing: 20) {
+                    EditButton()
+                  }
+                )
+                  .navigationBarTitle("Modulus")
+                  .navigationViewStyle(StackNavigationViewStyle())
+              }
+                
+              VStack{
+                Spacer()
+                HStack {
+                  Spacer()
+                Button(action:{}) {
+                    ZStack{
+                      Circle()
+                        .fill(Color.blue)
+                        .frame(width: 44, height: 44.0)
+                      Image(systemName: "plus")
+                        .frame(width: 44, height: 44.0)
+                        .colorInvert()
+                        .accentColor(.black)
+                    }
+                  .frame(width: 44, height: 44.0)
+                  
+                }
+                }
+              }
+              .padding([.bottom, .trailing])
+              
+              
+            
+            }
+        }
+
+    }
+  }
+
+ struct ContentView_Previews: PreviewProvider {
+      static var previews: some View {
+        AppView(store: Store(initialState: AppState(todos: IdentifiedArrayOf([])),
+                             reducer: appReducer.debug(), environment: AppEnvironment())
+        )
+      }
+  }
 
 
 public class App {
+  var store: Store<AppState,AppAction> = Store(initialState: AppState(todos: IdentifiedArrayOf([])),
+                                               reducer: appReducer.debug(), environment: AppEnvironment())
+  lazy var viewStore: ViewStore<AppState,AppAction> = {
+     ViewStore(store)
+  }()
+  
   public init() {
   }
   
   public lazy var rootController: UIViewController = loadEntryTable
   
   
-   var store: Store<AppState,AppAction> = Store(initialState: AppState(quadState: nil, items: ItemList([])),
-                                                reducer: appReducer, environment: AppEnvironment())
-   lazy var viewStore: ViewStore<AppState,AppAction> = {
-      ViewStore(store)
-   }()
-  
   var editViewController : EditViewController<Item<ScaffGraph>, Cell>?
   var inputTextField : UITextField?
-
   
-  lazy var loadEntryTable : UINavigationController  = {
+  lazy var loadEntryTable : UIViewController  = {
     let load = Current.file.load()
     
     switch load {
     case let .success(value):
-      self.viewStore.send(.setItems(value))
+      self.viewStore.send(.setItems( IdentifiedArrayOf(value) ))
     case let .error(error):
-       self.viewStore.send(.setItems(ItemList.mock))
+       self.viewStore.send(.setItems( IdentifiedArrayOf(ScaffGraph.mockList) ))
     }
             
+    /*
+    
+    
     let edit = EditViewController(
       config: EditViewContConfiguration( initialValue: viewStore.items.contents, configure: createCell)
     )
@@ -212,7 +238,34 @@ public class App {
       self.currentNavigator = CockpitNavigator(store: self.store.scope(state: {$0.quadState!}, action: { .interfaceAction($0) }))
       self.loadEntryTable.pushViewController(self.currentNavigator.vc, animated: true)
     }
-    edit.didSelectAccessory = { (item, cell) in
+    edit.didSelectAccessory = { (_, item) in
+      
+
+      let view = ScaffInfoForm(store: self.store.scope(state: { $0.todos }, action: AppAction.scaffInfo(id:action:))),
+          
+//          Store(
+//            initialState: ScaffInfoState(name: item.name,
+//                                          ledgers: item.content.ledgers,
+//                                          diags: item.content.diags,
+//                                          base: item.content.collars,
+//                                          stds: item.content.standards,
+//                                          length: item.content.width,
+//                                          depth: item.content.depth,
+//                                          height: item.content.height,
+//                                          baySizes: [25.0, 50, 100, 150, 175, 200, 250, 300],
+//                                          baySet: [3,5]),
+//            reducer: scaffInfoReducer,
+//            environment: ScaffInfoEnvironment())
+        )
+      
+      
+        
+        let vc = UIHostingController(rootView: view)
+
+      
+      self.loadEntryTable.pushViewController(vc, animated: true)
+
+      /*
       let driver = FormDriver(initial: cell, build: colorsForm)
       driver.formViewController.navigationItem.largeTitleDisplayMode = .never
         driver.didUpdate = {
@@ -220,7 +273,7 @@ public class App {
           //Current.model.addOrReplace(item: $0)
         }
         self.loadEntryTable.pushViewController(driver.formViewController, animated: true)
-        
+        */
       }
     edit.topRightBarButton = BarButtonConfiguration(type: .system(.add)) {
       func addTextField(_ textField: UITextField!){
@@ -238,13 +291,14 @@ public class App {
         let text = self.inputTextField?.text ?? "Default"
         var new : Item<ScaffGraph> = Item(
           content: (Item.template.map{ s in CGFloat( s.length.converted(to:.centimeters).value) }, (200,200,200) |> CGSize3.init) |> createScaffoldingFrom,
-          id: text,
           name: text)
         new.content.id = text
         self.viewStore.send(.addOrReplace(new))
         // self.store.send(.interfaceAction(.saveData))
          edit.undoHistory.currentValue = self.viewStore.items.contents
       })))
+ 
+    
       
       self.rootController.present(listNamePrompt, animated: true, completion: nil)
     }
@@ -257,6 +311,15 @@ public class App {
     let nav = UINavigationController(rootViewController: edit)
     styleNav(nav)
     return nav
+  */
+    
+    
+    let view = AppView(store: self.store)
+    
+    let vc = UIHostingController(rootView: view)
+    
+    return vc
+    
   }()
   
   var currentNavigator : CockpitNavigator!

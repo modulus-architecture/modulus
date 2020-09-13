@@ -12,10 +12,6 @@ import Singalong
 
 
 
-
-
-
-
 protocol UIRepresentable
 {
   var asView : UIView { get }

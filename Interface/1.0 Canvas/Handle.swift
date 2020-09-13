@@ -37,6 +37,7 @@ struct HandleState : Equatable{
   fileprivate var initialOffset = CGVector.zero // delta between touchDown center and handle center
   var previousLocation = CGPoint.zero
 }
+extension HandleState : Codable {}
 
 public enum HandleAction {
   case didPress(CGPoint)

@@ -83,13 +83,13 @@ func _writeToCache(image: UIImage, url: URL?) -> Result<String, LoadError> {
   return .success(newURL.lastPathComponent)
 }
 
-typealias TypResult = Result<ItemList<ScaffGraph>, LoadError>
+typealias TypResult = Result<[Item<ScaffGraph>], LoadError>
 
 struct FileIO {
   var persistenceURL : URL? = getDocumentsURL()
   var load : () -> TypResult = loadProgression
   var loadFromDocuments : () -> TypResult = _loadFromDocuments
-  var save : (ItemList<ScaffGraph>) -> () = saveItems
+  var save : ([Item<ScaffGraph>]) -> () = saveItems
 }
 
 enum LoadError : Error {
@@ -113,7 +113,7 @@ func getDocumentsURL() -> URL?{
   }
 }
 
-func loadProgression() -> Result<ItemList<ScaffGraph>, LoadError>{
+func loadProgression() -> Result<[Item<ScaffGraph>], LoadError>{
   let documentsResult = Current.file.loadFromDocuments()
   if case .success = documentsResult {
     return documentsResult
@@ -125,16 +125,9 @@ func loadProgression() -> Result<ItemList<ScaffGraph>, LoadError>{
 
 
 
-func addIDToScaffGraph(itemList : inout ItemList<ScaffGraph>) {
-  for (offset, element) in itemList.contents.enumerated() {
-    var scaffGraph = itemList.contents[offset].content
-    print("was", scaffGraph.id, "will be", element.id)
-    scaffGraph.id = element.id
-    itemList.addOrReplace(item: Item(content: scaffGraph, id: element.id, name: element.name, sizePreferences: element.sizePreferences, isEnabled: element.isEnabled, thumbnailFileName: element.thumbnailFileName))
-  }
-}
 
-func _loadFromDocuments() -> Result<ItemList<ScaffGraph>, LoadError>{
+
+func _loadFromDocuments() -> Result<[Item<ScaffGraph>], LoadError>{
   
   print("Loading from Load Documents")
   
@@ -149,10 +142,7 @@ func _loadFromDocuments() -> Result<ItemList<ScaffGraph>, LoadError>{
     print("Loading from Load Documents DOOOO")
 
     let decoder = JSONDecoder()
-    var jsonData = try decoder.decode(ItemList<ScaffGraph>.self, from: data)
-    #warning("Begin Should remove crutch")
-    addIDToScaffGraph(itemList: &jsonData)
-    #warning("Begin Should remove crutch")
+    let jsonData = try decoder.decode([Item<ScaffGraph>].self, from: data)
     
     return .success(jsonData)
   } catch  {
@@ -160,7 +150,7 @@ func _loadFromDocuments() -> Result<ItemList<ScaffGraph>, LoadError>{
   }
 }
 
-func saveItems(item: ItemList<ScaffGraph>) {
+func saveItems(item: [Item<ScaffGraph>]) {
   let encoder = JSONEncoder()
   encoder.outputFormatting = .prettyPrinted
   let data = try! encoder.encode(item)
@@ -178,8 +168,8 @@ func saveItems(item: ItemList<ScaffGraph>) {
 extension FileIO {
   
   static var mock : FileIO = FileIO(persistenceURL: getDocumentsURL(),
-                                    load: { .success(.mock) },
-                                    loadFromDocuments: {.success(.mock)},
+                                    load: { .success(ScaffGraph.mockList) },
+                                    loadFromDocuments: {.success(ScaffGraph.mockList)},
                                     save: {
                                       let encoder = JSONEncoder()
                                       encoder.outputFormatting = .prettyPrinted

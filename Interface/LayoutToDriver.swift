@@ -50,3 +50,5 @@ public struct Changed<A: Equatable> : Equatable {
     changed = value
   }
 }
+
+extension Changed : Codable where A : Codable{}

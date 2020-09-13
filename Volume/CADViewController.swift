@@ -32,7 +32,7 @@ public enum CameraView {
 }
 
 public struct SCNProviderState : Equatable{
-   var scaff: [ScaffMember]
+  var scaff: [ScaffMember]
   var view : CameraView
   public init(scaff: [ScaffMember], view:CameraView = .front) {
     self.scaff = scaff
@@ -46,7 +46,7 @@ public struct SCNProviderState : Equatable{
 
 public class CADViewController : UIViewController, UIPopoverPresentationControllerDelegate {
   let store : Store<SCNProviderState, Never>
-   let viewStore : ViewStore<SCNProviderState, Never>
+  let viewStore : ViewStore<SCNProviderState, Never>
 
   // State representation
   private enum UpdatingStatus {
@@ -55,27 +55,25 @@ public class CADViewController : UIViewController, UIPopoverPresentationControll
   }
   private var status : UpdatingStatus
   private lazy var activity : UIActivityIndicatorView = {
-    var anAct = UIActivityIndicatorView(style: .gray)
+    var anAct = UIActivityIndicatorView(style: .medium)
     anAct.translatesAutoresizingMaskIntoConstraints = false
     anAct.startAnimating()
     return anAct
   }()
   
   private var productionShop : ProductionShop?
+  fileprivate var scnView: CADView!
+  private var segmentedViewControl = UISegmentedControl(items: ["Top", "Bottom", "Front", "Right", "Back", "Left"])
+  private var orthoControl = UISegmentedControl(items:["Perspective", "Ortho"])
   
-  public init(store: Store<SCNProviderState, Never>)
-  {
+  public init(store: Store<SCNProviderState, Never>) {
     self.store = store
-   self.viewStore = ViewStore(self.store)
+    self.viewStore = ViewStore(self.store)
     self.status = .needsUpdate
     super.init(nibName:nil, bundle:nil)
   }
   required init?(coder aDecoder: NSCoder) { fatalError() }
-  
-  fileprivate var scnView: CADView!
-  
-  private var segmentedViewControl = UISegmentedControl(items: ["Top", "Bottom", "Front", "Right", "Back", "Left"])
-  private var orthoControl = UISegmentedControl(items:["Perspective", "Ortho"])
+
     
     // MARK: - Navigation
   
@@ -134,29 +132,13 @@ public class CADViewController : UIViewController, UIPopoverPresentationControll
         view.addSubview(orthoControl)
       orthoControl.addTarget(self, action: #selector(CADViewController.perspControlChanged(_:)), for: UIControl.Event.valueChanged)
         
-    
-        
-        //zoomExtents.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        
         orthoControl.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         orthoControl.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         orthoControl.bottomAnchor.constraint(equalTo: segmentedViewControl.topAnchor, constant: -8).isActive = true
     }
     
-    
-  
-    
     public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
-    }
-
-    
-    @IBAction func zoomExtents(_ sender: UIButton) {
-        
-        scnView.showsZoomFrame = true
-        scnView.zoomExtents()
-        
-        updateObservers()
     }
     
     @objc func perspControlChanged(_ sender: UISegmentedControl) {
@@ -175,39 +157,20 @@ public class CADViewController : UIViewController, UIPopoverPresentationControll
     // MARK: - Camera Stuff
     @objc func segmentedControlChanged(_ sender: UISegmentedControl) {
         
-        let text = sender.titleForSegment(at: sender.selectedSegmentIndex)!
-        
-        switch text
-        {
-        case "Top":
-            scnView.currentView = .top
-        
-        case "Bottom":
-            scnView.currentView = .bottom
-            break
-        case "Front":
-            scnView.currentView = .front
-            break
-        case "Back":
-            scnView.currentView = .back
-            break
-        case "Left":
-            scnView.currentView = .leftSide
-            break
-        case "Right":
-            scnView.currentView = .rightSide
-            break
-        default:
-            scnView.currentView = .custom
-            break;
+        switch sender.titleForSegment(at: sender.selectedSegmentIndex)! {
+        case "Top": scnView.currentView = .top
+        case "Bottom": scnView.currentView = .bottom
+        case "Front": scnView.currentView = .front
+        case "Back": scnView.currentView = .back
+        case "Left": scnView.currentView = .leftSide
+        case "Right": scnView.currentView = .rightSide
+        default: scnView.currentView = .custom
         }
         
         updateObservers()
     }
     
     var cameraObservers : [CameraObserver] = []
-  
-  
 }
 
 

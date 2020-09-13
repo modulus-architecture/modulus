@@ -41,6 +41,7 @@ public struct QuadState<Holder:GraphHolder> : Equatable{
   public var sideState: InterfaceState<Holder>
 }
 
+//extension QuadState : Codable {}
 
 func zoomEnded(state: inout CenteredGrowState) {
   let setterScale = state.grow.read.zoomScale

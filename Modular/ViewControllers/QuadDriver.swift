@@ -28,6 +28,8 @@ public struct PageState : Equatable {
   }
 }
 
+extension PageState : Codable {}
+
 public enum PageAction {
   case didPageVertically
   case didPageHorizontally

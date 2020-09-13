@@ -40,7 +40,10 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
 //      modelSpaceAllowableSize
    }
    
-  init(spriteFrame: CGRect, scale : CGFloat, sizePreferences: [CGFloat], graph: Holder, editingViews: [GenericEditingView<Holder>] ){
+  init(spriteFrame: CGRect, scale : CGFloat, sizePreferences: [CGFloat], graph: Holder
+    ,
+       editingViews: [GenericEditingView<Holder>]
+  ){
     self.spriteFrame = spriteFrame
     self.scale = scale
     self.sizePreferences = sizePreferences
@@ -48,7 +51,8 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
     self.editingView = editingViews[0]
     self.loadedViews = editingViews
     self.frame = Changed(.zero)
-    self.aligned = (.center, .center)
+    self.horizontalAlignment = .center
+    self.verticalAlignment = .center
     self.layoutFrame = .zero
     self.layoutOrigin = Changed(.zero)
     self.layoutSize = Changed(.zero)
@@ -68,7 +72,7 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
                                                                         s3, self.graph.edges)
           //                           ICAN : Pass *Holder* into editingView.size Function to get a CGSize back
         }
-        layoutFrame = newFrame.withInsetRect(ofSize: viewSpaceSize, hugging: aligned)
+        layoutFrame = newFrame.withInsetRect(ofSize: viewSpaceSize, hugging: (horizontalAlignment, verticalAlignment))
         layoutOrigin.update(layoutFrame.origin)
         layoutSize.update(layoutFrame.size)
       }
@@ -78,15 +82,16 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
   public var scale : CGFloat
   public var graph : Holder
   var sizePreferences : [CGFloat]
-  let editingView : GenericEditingView<Holder>
-  let loadedViews : [GenericEditingView<Holder>]
+   let editingView : GenericEditingView<Holder>
+   let loadedViews : [GenericEditingView<Holder>]
   public var modelSpaceSize : CGSize { self.graph |> self.editingView.size }
   public var viewSpaceSize : CGSize { modelSpaceSize * self.scale }
   public var nodeOrigin : CGPoint {
     CGPoint(x: self.layoutOrigin.value.x,
             y: self.spriteFrame.height - self.viewSpaceSize.height - self.layoutOrigin.value.y)
   }
-  public var aligned : (HorizontalPosition, VerticalPosition)
+  public var horizontalAlignment : HorizontalPosition
+  public var verticalAlignment : VerticalPosition
   
   fileprivate var modelSpaceAllowableSize : Changed<CGSize>
   private(set) var layoutOrigin : Changed<CGPoint>
@@ -110,6 +115,9 @@ public struct SpriteState<Holder:GraphHolder> : Equatable {
   
   var rectAnimations : CGRect?
 }
+
+
+
 
 public enum SpriteAction {
   case spriteTapped(location: CGPoint)

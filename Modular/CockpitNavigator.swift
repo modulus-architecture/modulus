@@ -18,12 +18,14 @@ import ComposableArchitecture
 /// Cockpit reducer stack. Cockpit is  the state and view that holds menu and tool bars above the level of individual 2D screen view of the graph, and is responsible for bringing the 2D graph and presenting the 3D and AR views
 public struct CockpitState : Equatable {
   var quad : QuadState<ScaffGraph>
-  var item : Item<ScaffGraph>
+  var item : ScaffGraph
 }
 
+
+
 extension CockpitState {
-   var arProvider : ARProviderState { ARProviderState(scaff: self.item.content |> members )}
-   var scnProvider : SCNProviderState { SCNProviderState(scaff: self.item.content |> members,
+   var arProvider : ARProviderState { ARProviderState(scaff: self.item |> members )}
+   var scnProvider : SCNProviderState { SCNProviderState(scaff: self.item |> members,
                                                          view: quad.pageState.currentQuadrant |> cameraView)
    }
 }
@@ -55,12 +57,37 @@ public let cockpitReducer = Reducer<CockpitState, CockpitAction, CockpitEnvironm
          .quad(.side),
          .quad(.plan),
          .quad(.rotated):
-        state.item.content = state.quad.planState.spriteState.graph
+        state.item = state.quad.planState.spriteState.graph
         return .none
     case .quad(.page): return .none
     }
       return .none
 })
+
+import SwiftUI
+struct CockpitUIView : UIViewControllerRepresentable {
+  func makeUIViewController(context: UIViewControllerRepresentableContext<CockpitUIView>) -> UIViewController {
+    let nav = CockpitNavigator(store: self.store.scope(state: {$0.quadState!}, action: { .interfaceAction($0) }))
+        return nav.vc
+    //return UIViewController()
+  }
+  
+  func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<CockpitUIView>) {
+    
+  }
+  
+  var store: Store<Item<ScaffGraph>, StructureListAction>
+
+//  func makeUIViewController(context: Context) -> UIViewControllerType {
+//    let nav = CockpitNavigator(store: self.store.scope(state: {$0.quadState!}, action: { .interfaceAction($0) }))
+//    return nav.vc
+//  }
+//
+//  func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+//
+//  }
+  
+}
 
 public class CockpitNavigator {
   public init(store: Store<CockpitState, CockpitAction> ) {
@@ -98,21 +125,21 @@ public class CockpitNavigator {
   @objc func presentInfo() {
    let viewStore = ViewStore(self.store)
    let cell = viewStore.item
-    let driver = FormDriver(initial: cell, build: colorsForm)
-    driver.formViewController.navigationItem.largeTitleDisplayMode = .never
-    driver.didUpdate = { _ in
+//    let driver = FormDriver(initial: cell, build: colorsForm)
+//    driver.formViewController.navigationItem.largeTitleDisplayMode = .never
+//    driver.didUpdate = { _ in
       //self.store.send(.addOrReplace($0))
       //self.store.send(.interfaceAction(.saveData))
-    }
-    let nav = embedInNav(driver.formViewController)
-    nav.navigationBar.prefersLargeTitles = false
-    driver.formViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
-      title: "Dismiss",
-      style: UIBarButtonItem.Style.plain ,
-      target: self,
-      action: #selector(CockpitNavigator.dismiss3D)
-    )
-    self.vc.present(nav, animated: true, completion: nil)
+//    }
+//    let nav = embedInNav(driver.formViewController)
+//    nav.navigationBar.prefersLargeTitles = false
+//    driver.formViewController.navigationItem.rightBarButtonItem = UIBarButtonItem(
+//      title: "Dismiss",
+//      style: UIBarButtonItem.Style.plain ,
+//      target: self,
+//      action: #selector(CockpitNavigator.dismiss3D)
+//    )
+//    self.vc.present(nav, animated: true, completion: nil)
   }
   
   @objc func present3D() {

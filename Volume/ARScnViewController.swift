@@ -22,11 +22,10 @@ public struct ARProviderState : Equatable {
 public class ARScnViewController : UIViewController, Context, SCNContentContext, SCNBounder, ARSCNViewDelegate // add child node content
 {
   let store : Store<ARProviderState, Never>
-   let viewStore : ViewStore<ARProviderState, Never>
+  let viewStore : ViewStore<ARProviderState, Never>
 
 
   var contentNode: SCNNode
-  
   var sceneView : SCNView { return self.arView }
   
   fileprivate var arView: ARSCNView!
@@ -39,15 +38,14 @@ public class ARScnViewController : UIViewController, Context, SCNContentContext,
   }
   private var status : UpdatingStatus
   private lazy var activity : UIActivityIndicatorView = {
-    var anAct = UIActivityIndicatorView(style: .gray)
+    var anAct = UIActivityIndicatorView(style: .medium)
     anAct.translatesAutoresizingMaskIntoConstraints = false
     anAct.startAnimating()
     return anAct
   }()
   
   
-  public init(store: Store<ARProviderState, Never>)
-  {
+  public init(store: Store<ARProviderState, Never>) {
     self.store = store
    self.viewStore = ViewStore(self.store)
     self.status = .needsUpdate

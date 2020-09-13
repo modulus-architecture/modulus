@@ -31,6 +31,8 @@ public struct CanvasSelectionState : Equatable {
     self.scroll = AreaOfInterestState(centered: centered)
   }
 }
+extension CanvasSelectionState : Codable {}
+
 extension CanvasSelectionState {
   public var canvasFrame : CGRect { self.scroll.centered.grow.read.rootContentFrame }
   public var interimZoom : CGFloat { self.scroll.centered.grow.read.zoomScale }

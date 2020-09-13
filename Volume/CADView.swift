@@ -23,34 +23,9 @@ extension CADView : SCNContentContext // add child node content
 
 class CADView : UIView
 {
-    var camera : Camera {
-        set (newCamera) {
-            scnView.cameraDistance = newCamera.distance
-            scnView.fovDegrees =  (newCamera.xFov, newCamera.yFov)
-            scnView.cameraOrbit.eulerAngles.x = GLKMathDegreesToRadians(newCamera.orbitX)
-            scnView.cameraOrbit.eulerAngles.y = GLKMathDegreesToRadians(newCamera.orbitY)
-            scnView.cameraOrbit.eulerAngles.z = GLKMathDegreesToRadians(newCamera.orbitZ)
-        }
-        get {
-            
-            let c = Camera(
-                distance: scnView.cameraDistance
-                , xFov: scnView.fovDegrees.x
-                , yFov: scnView.fovDegrees.y
-                , orbitX: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.x)
-                , orbitY: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.y)
-                , orbitZ: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.z)
-            )
-            return c
-        }
-    }
-    
-    
     private var scnView : _CADView
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
+    required init?(coder aDecoder: NSCoder) { fatalError() }
     
    init(frame: CGRect, view: CameraView) {
       self.scnView = _CADView(frame: frame, cameraAngle: cameraViewToGeo(view))
@@ -63,6 +38,27 @@ class CADView : UIView
         self.scnView.frame = self.frame
     }
     
+  var camera : Camera {
+      set (newCamera) {
+          scnView.cameraDistance = newCamera.distance
+          scnView.fovDegrees =  (newCamera.xFov, newCamera.yFov)
+          scnView.cameraOrbit.eulerAngles.x = GLKMathDegreesToRadians(newCamera.orbitX)
+          scnView.cameraOrbit.eulerAngles.y = GLKMathDegreesToRadians(newCamera.orbitY)
+          scnView.cameraOrbit.eulerAngles.z = GLKMathDegreesToRadians(newCamera.orbitZ)
+      }
+      get {
+          let c = Camera(
+              distance: scnView.cameraDistance
+              , xFov: scnView.fovDegrees.x
+              , yFov: scnView.fovDegrees.y
+              , orbitX: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.x)
+              , orbitY: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.y)
+              , orbitZ: GLKMathRadiansToDegrees(scnView.cameraOrbit.eulerAngles.z)
+          )
+          return c
+      }
+  }
+  
     // MARK: Ortho Iso
     
     var  orthographic  = false
@@ -71,125 +67,7 @@ class CADView : UIView
             self.scnView.pointOfView?.camera?.usesOrthographicProjection = orthographic
         }
     }
-    
-    // MARK: Zoom
-    
-    
-    
-    
-    // MARK: Zoom Extents
-    
-    // Zooming Functions
-    
-    // Depends on bounding3D, camDistance
-    
-    fileprivate func distanceToZoomExtents (withinFrame zoomFrame: CGRect) -> Float
-    {
-        let (_, max1) = scnView.boundingMinAndMax
-        
-        // Assume zoomframe is symmetrical to view.frame
-        // get radians of origin as a projected point of the viewing pyramid
-        
-        let (xFOVWithMargins, yFOVWithMargins) = scnView.radiansOf(projectedPoint: zoomFrame.origin)
-        
-        // Distance to camera - bounding edge closest - Trig: Adjancent height when given a y
-        let distanceToMoveX = scnView.cameraDistance - max1.z - max1.x/tan(xFOVWithMargins/2)
-        let distanceToMoveY = scnView.cameraDistance - max1.z - max1.y/tan(yFOVWithMargins/2)
-        
-        // Minus the larger distance from Camera so that
-        // either x or y margin is always greater than or equal to margin
-        
-        let cameraDistanceMove : Float
-        
-        if distanceToMoveY < distanceToMoveX {
-            cameraDistanceMove = scnView.cameraDistance - distanceToMoveY
-        }
-        else
-        {
-            cameraDistanceMove = scnView.cameraDistance - distanceToMoveX
-        }
-        
-        return cameraDistanceMove
-    }
-    
-    
-    // Zoom Extents
-    
-    lazy var zoomFrame : CGRect = // Set after init
-        {
-            return self.frame.insetBy(dx: 44, dy: 44)
-    }()
-    
-    func zoomExtents () {
-        scnView.cameraDistance = distanceToZoomExtents(withinFrame: zoomFrame)
-    }
-    
-    // MARK: 2D Debuggin
-    // Zoom Frame Debuging
-    
-    func viewThing(view: UIView)
-    {
-        view.backgroundColor = .clear
-    }
-    
-    class ClearView : UIView {
-        internal override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-            return false
-        }
-    }
-    
-    fileprivate lazy var zoomFrameView : UIView =
-        {
-            let v = ClearView(frame: self.zoomFrame)
-            v.layer.borderColor = UIColor.red.cgColor
-            v.layer.borderWidth = 1.0
-            return v
-    }()
-    
-    var showsZoomFrame = false {
-        didSet {
-            switch showsZoomFrame
-            {
-            case true: self.addSubview(zoomFrameView)
-            case false: zoomFrameView.removeFromSuperview()
-            }
-        }
-    }
-    
-    fileprivate lazy var crossHairsView : UIView =
-    {
-        class CrossView : UIView {
-            override func draw(_ rect: CGRect) {
-                let path = UIBezierPath(ovalIn: rect)
-                UIColor.red.setFill()
-                path.fill()
-            }
-        }
-        
-        let v = ClearView(frame: self.frame)
-        let size : CGFloat = 44.0
-        let cross = CrossView(frame: self.frame.insetBy(dx: self.frame.width/2 - size/2, dy: self.frame.height/2 - size/2))
-        v.addSubview (cross)
-        
-        return v
-    }()
-    
-    var showCrossHairs = false {
-        didSet {
-            switch showCrossHairs
-            {
-            case true: self.addSubview(crossHairsView)
-            case false: crossHairsView.removeFromSuperview()
-            }
-        }
-    }
-    
-    // MARK: 3D Debuggin
-    
-    
    
-   
-    
     var currentView : CameraView = .top
         {
         didSet {
@@ -237,9 +115,7 @@ fileprivate class _CADView : SCNView, UIScrollViewDelegate, SCNBounder, SCNConte
   public var contentNode : SCNNode
     
     
-  required init?(coder aDecoder: NSCoder) {
-    fatalError()
-  }
+  required init?(coder aDecoder: NSCoder) { fatalError() }
 
    init(frame: CGRect, cameraAngle: SCNVector3) {
         // Setup content node
